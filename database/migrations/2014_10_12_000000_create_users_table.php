@@ -10,6 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
+
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -21,8 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('gender');
             $table->date('birthdate');
-            $table->integer('address_id');
-            $table->integer('payment_options_id');
+            $table->integer('address_id')->nullable();
+            $table->integer('payment_options_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

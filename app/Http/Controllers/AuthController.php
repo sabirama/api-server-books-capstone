@@ -26,7 +26,8 @@ class AuthController extends Controller
             "last_name" => $fields["last_name"],
             "email" => $fields["email"],
             "password" => bcrypt($fields["password"]),
-            "gender" => $fields["gender"]
+            "gender" => $fields["gender"],
+            "birthdate" => $fields["birthdate"]
         ]);
 
         $token = $user->createToken("userAuth")->plainTextToken;
