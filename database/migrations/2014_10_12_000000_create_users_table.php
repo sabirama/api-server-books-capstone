@@ -22,8 +22,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('gender');
             $table->date('birthdate');
-            $table->integer('address_id')->nullable();
-            $table->integer('payment_options_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

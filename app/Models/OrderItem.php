@@ -12,13 +12,14 @@ class OrderItem extends Model
 {
     use HasFactory;
      protected $fillable = [
+        'book_id',
         'quantity',
         'price_total'
     ];
 
-    public function order(): BelongsTo
+    public function orderDetail(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(OrderDetails::class);
     }
 
     public function books(): HasMany

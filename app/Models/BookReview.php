@@ -12,6 +12,8 @@ class BookReview extends Model
     use HasFactory;
 
      protected $fillable = [
+        'book_id',
+        'user_id',
         'body',
         'rate'
     ];

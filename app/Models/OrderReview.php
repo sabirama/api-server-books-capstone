@@ -12,17 +12,19 @@ class OrderReview extends Model
     use HasFactory;
 
      protected $fillable = [
+        'user_id',
+        'order_id',
         'body',
         'rate'
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasOne(Order::class);
     }
 }

@@ -14,34 +14,13 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'payment_options_id',
-        'address',
-        'price_total'
+        'user_id',
+        'order_details_id'
     ];
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function orderItem(): HasMany
-    {
-        return $this->hasMany(OrderItem::class);
-    }
 
     public function orderReview(): HasMany
     {
         return $this->hasMany(OrderReview::class);
-    }
-
-    public function address(): HasOne
-    {
-        return $this->hasOne(Address::class);
-    }
-
-    public function paymentOptions(): HasOne
-    {
-        return $this->hasOne(paymentOptions::class);
     }
 
 }

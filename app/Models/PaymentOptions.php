@@ -15,15 +15,9 @@ class PaymentOptions extends Model
         'type'
     ];
 
-    public function user(): BelongsTo
+    public function orderDetails(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(OrderDetails::class);
     }
-
-    public function order(): BelongsTo
-    {
-        return $this->belongsTo(Order::class);
-    }
-
 
 }
