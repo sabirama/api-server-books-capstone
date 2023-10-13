@@ -1,7 +1,5 @@
-put Dockerfile and .env in project or on render in secret files
-
 ----------------------------------------------------------------------------------------------------------
---Dockerfile--
+put Dockerfile in project or on render in secret files
 ----------------------------------------------------------------------------------------------------------
 FROM richarvey/nginx-php-fpm:3.1.4
 
@@ -17,23 +15,13 @@ ENV REAL_IP_HEADER 1
 ENV APP_NAME Laravel
 ENV APP_KEY {php artisan key:generate --show}
 ENV APP_URL http://localhost
-
-
-# Laravel config
 ENV APP_ENV production
 ENV APP_DEBUG false
+
+# Laravel config
+
 ENV DB_CONNECTION mysql
 ENV DB_PORT 3306
-
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
-
-CMD ["/start.sh"]
-----------------------------------------------------------------------------------------------------------
-
-----------------------------------------------------------------------------------------------------------
---.env file--
-----------------------------------------------------------------------------------------------------------
 
 ENV DB_HOST
 ENV DB_DATABASE
@@ -41,4 +29,9 @@ ENV DB_USERNAME
 ENV DB_PASSWORD
 ENV MYSQL_ATTR_SSL_CA cacert-2023-08-22.pem
 
+
+# Allow composer to run as root
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+CMD ["/start.sh"]
 ----------------------------------------------------------------------------------------------------------
