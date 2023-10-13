@@ -29,8 +29,6 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'gender'=> fake()->randomElement(["male",'female','others','prefer not to say']),
             'birthdate'=> fake()->date(),
-            'address_id'=> Address::pluck('id')->random(),
-            'payment_options_id'=> PaymentOptions::pluck('id')->random(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

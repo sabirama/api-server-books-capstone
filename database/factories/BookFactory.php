@@ -20,7 +20,7 @@ class BookFactory extends Factory
     {
         return [
             'title' => fake()->sentence(5),
-            'book_details_id' => BookDetails::pluck(id)->random(),
+            'book_details_id' => BookDetails::pluck('id')->random(),
             'price' => fake()->numberBetween(300,2000)
         ];
     }

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BookSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(OrderItemSeeder::class);
-        $this->call(OrderDetails::class);
+        $this->call(OrderDetailsSeeder::class);
         $this->call(OrderSeeder::class);
         $this->call(BookReviewSeeder::class);
         $this->call(OrderReviewSeeder::class);
