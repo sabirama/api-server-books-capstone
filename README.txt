@@ -36,8 +36,13 @@ CMD ["/start.sh"]
 
 .env on render secret files
 
+ENV APP_NAME Laravel
+ENV APP_KEY base64:nuXAyvg+w4aMlsUvqUg4qFSiShftJmhz8m3NfsDV3ds=
+ENV APP_URL http://localhost
+
 ENV DB_HOST
 ENV DB_DATABASE
 ENV DB_USERNAME
 ENV DB_PASSWORD
+ENV DB_PORT 3306
 ENV MYSQL_ATTR_SSL_CA
