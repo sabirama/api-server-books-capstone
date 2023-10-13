@@ -12,17 +12,16 @@ ENV PHP_ERRORS_STDERR 1
 ENV RUN_SCRIPTS 1
 ENV REAL_IP_HEADER 1
 
-
-# Laravel config
 ENV APP_NAME Laravel
 ENV APP_KEY {php artisan key:generate --show}
 ENV APP_URL http://localhost
 ENV APP_ENV production
 ENV APP_DEBUG false
 
+# Laravel config
+
 ENV DB_CONNECTION mysql
 ENV DB_PORT 3306
-
 ENV DB_HOST
 ENV DB_DATABASE
 ENV DB_USERNAME
