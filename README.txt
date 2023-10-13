@@ -1,10 +1,5 @@
-Please edit the DockerFile and put your database credentials there.
+put Dockerfile in project or on render in secret files
 
-
-
-
-Dockerfile
---
 FROM richarvey/nginx-php-fpm:3.1.4
 
 COPY . .
@@ -27,22 +22,14 @@ ENV APP_DEBUG false
 ENV DB_CONNECTION mysql
 ENV DB_PORT 3306
 
+ENV DB_HOST
+ENV DB_DATABASE
+ENV DB_USERNAME
+ENV DB_PASSWORD 
+ENV MYSQL_ATTR_SSL_CA cacert-2023-08-22.pem
+
+
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 CMD ["/start.sh"]
---
-
-
-.env on render secret files
-
-ENV APP_NAME Laravel
-ENV APP_KEY base64:nuXAyvg+w4aMlsUvqUg4qFSiShftJmhz8m3NfsDV3ds=
-ENV APP_URL http://localhost
-
-ENV DB_HOST
-ENV DB_DATABASE
-ENV DB_USERNAME
-ENV DB_PASSWORD
-ENV DB_PORT 3306
-ENV MYSQL_ATTR_SSL_CA
