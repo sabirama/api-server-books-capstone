@@ -8,7 +8,7 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function index() {
-        return order::all();
+        return Order::all();
     }
 
     //display by name

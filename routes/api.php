@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,12 +47,14 @@ Route::group([], function() {
     Route::get('/order:byuserId', [OrderController::class, 'userId']);
     Route::get('/order/{userId}', [OrderController::class, 'perUser']);
     Route::get('/order/{userId}/{id}', [OrderController::class, 'show']);
-});
 
-// Protected Resource Routes requires bearer token
-Route::group(['middleware'=>['auth:sanctum']], function() {
+    //Order Items Routes
+    Route::get('/order-items', [OrderItemController::class, 'index']);
+    Route::get('/order-items/{userId}/{id}', [OrderItemController::class, 'singleItem']);
 
-    //Authenticated User
+//Routes to be put to authentication
+
+     //Authenticated User
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user/{id}', [AuthController::class, 'viewUser']);
 
@@ -75,3 +78,9 @@ Route::group(['middleware'=>['auth:sanctum']], function() {
     Route::put('/orders/{id}', [GenreController::class, 'update']);
     Route::delete('/orders/{id}', [GenreController::class, 'destroy']);
 });
+
+// // Protected Resource Routes requires bearer token
+// Route::group(['middleware'=>['auth:sanctum']], function() {
+
+
+// });
