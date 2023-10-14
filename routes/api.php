@@ -31,7 +31,7 @@ Route::group([], function() {
     Route::get('/books', [BooksController::class, 'index']);
     Route::get('/books:bylatest', [BooksController::class, 'latest']);
     Route::get('/books:byname', [BooksController::class, 'name']);
-    Route::get('/book/{id}', [BooksController::class, 'show']);
+    Route::get('/books/{id}', [BooksController::class, 'show']);
 
     //Author Routes
     Route::get('/authors', [AuthorController::class, 'index']);

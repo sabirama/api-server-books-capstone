@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\Genre;
 use App\Models\Author;
+use App\Models\Book;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BookDetails>
  */
@@ -20,6 +21,7 @@ class BookDetailsFactory extends Factory
     {
         return [
             'body'=> fake()->paragraph(1),
+            'book_id'=>Book::pluck('id')->random(),
             'genre_id'=>Genre::pluck('id')->random(),
             'author_id'=>Author::pluck('id')->random(),
         ];

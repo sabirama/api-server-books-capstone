@@ -15,7 +15,7 @@ class UserResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray(): array
     {
         $orders = Order::whereIn('user_id', [$this->id])->get();
         $bookReviews = BookReview::whereIn('user_id', [$this->id])->get();

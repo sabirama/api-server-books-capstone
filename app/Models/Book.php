@@ -15,7 +15,6 @@ class Book extends Model
 
      protected $fillable = [
         'title',
-        'book_details_id',
         'price'
     ];
 

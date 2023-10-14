@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Http\Resources\BookResource;
+
+use App\Models\BookReview;
+use App\Models\BookDetails;
+use App\Models\UserResource;
 
 class BooksController extends Controller
 {
     public function index() {
-        return Book::all();
+
+        $books = Book::all();
+       return BookResource::collection($books);
+
     }
 
     //display latest
@@ -26,7 +34,8 @@ class BooksController extends Controller
     //individual book
     public function show(Request $request, $id)
     {
-        return Book::find($id);
+        $book = Book::find($id);
+        return new BookResource($id);
     }
 
     //add new book
