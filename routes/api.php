@@ -52,11 +52,17 @@ Route::group([], function() {
     Route::get('/order-items', [OrderItemController::class, 'index']);
     Route::get('/order-items/{userId}/{id}', [OrderItemController::class, 'singleItem']);
 
+
 //Routes to be put to authentication
 
+});
+
+ // Protected Resource Routes requires bearer token
+ Route::group(['middleware' => ['auth:sanctum']], function() {
+
      //Authenticated User
-    Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user/{id}', [AuthController::class, 'viewUser']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     //Books
     Route::post('/books', [BooksController::class, 'store']);
@@ -77,10 +83,5 @@ Route::group([], function() {
     Route::post('/orders', [GenreController::class, 'store']);
     Route::put('/orders/{id}', [GenreController::class, 'update']);
     Route::delete('/orders/{id}', [GenreController::class, 'destroy']);
-});
 
-// // Protected Resource Routes requires bearer token
-// Route::group(['middleware'=>['auth:sanctum']], function() {
-
-
-// });
+ });

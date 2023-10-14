@@ -22,9 +22,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->firstname(1),
-            'last_name' => fake()->lastname(1),
-            'username' => fake()->firstname(1),
+            'first_name' => fake()->firstname(),
+            'last_name' => fake()->lastname(),
+            'username' => fake()->unique()->word(10),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'gender'=> fake()->randomElement(["male",'female','others','prefer not to say']),

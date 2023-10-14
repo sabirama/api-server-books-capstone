@@ -17,9 +17,9 @@ class AuthorFactory extends Factory
     public function definition(): array
     {
         return [
-            'pen_name' => fake()->name(1),
-            'first_name'=> fake()->name(1),
-            'last_name'=> fake()->name(1),
+            'pen_name' => fake()->firstname(),
+            'first_name'=> fake()->firstname(),
+            'last_name'=> fake()->lastname(),
             'details'=> fake()->paragraph(200)
         ];
     }

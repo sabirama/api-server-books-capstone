@@ -16,8 +16,27 @@ class GenreFactory extends Factory
      */
     public function definition(): array
     {
+        $genre = [
+                'action',
+                'adventure',
+                'thriller',
+                'slice of life',
+                'drama',
+                'romance',
+                'school',
+                'historical',
+                'horror',
+                'thriller',
+                'fantasy',
+                'science fiction'
+        ];
+
+        // Get a random genre and remove it from the collection
+        $randomGenre = array_splice($genre, array_rand($genre), 1)[0];
+
         return [
-            'name' => fake()->randomElement(['action','adventure','thriller','slice of life','drama','romance']),
+
+            'name' => $randomGenre,
             'details' =>  fake()->sentence(5)
         ];
     }
