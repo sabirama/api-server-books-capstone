@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Http\Resources\OrderResource;
 
 class OrderController extends Controller
 {
     public function index() {
-        return Order::all();
+        $orders = Order::all();
+        return OrderResource::collection($orders);
     }
 
     //display by name

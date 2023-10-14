@@ -44,10 +44,10 @@ Route::group([], function() {
     Route::get('/genres/{id}', [GenreController::class, 'show']);
 
     //Order Routes
-    Route::get('/order', [OrderController::class, 'index']);
-    Route::get('/order:byuserId', [OrderController::class, 'userId']);
-    Route::get('/order/{userId}', [OrderController::class, 'perUser']);
-    Route::get('/order/{userId}/{id}', [OrderController::class, 'show']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders:byuserId', [OrderController::class, 'userId']);
+    Route::get('/orders/{userId}', [OrderController::class, 'perUser']);
+    Route::get('/orders/{userId}/{id}', [OrderController::class, 'show']);
 
     //Order Items Routes
     Route::get('/order-items', [OrderItemController::class, 'index']);

@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\Order;
 use App\Models\BookReview;
 use App\Models\OrderReview;
+use App\Http\Resources\OrderResource;
 
 class UserResource extends JsonResource
 {
@@ -15,7 +16,7 @@ class UserResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(): array
+    public function toArray(Request $request): array
     {
         $orders = Order::whereIn('user_id', [$this->id])->get();
         $bookReviews = BookReview::whereIn('user_id', [$this->id])->get();
@@ -29,7 +30,7 @@ class UserResource extends JsonResource
             'email'=>$this->email,
             'gender'=>$this->gender,
             'birthdate'=>$this->birthdate,
-            'orders'=> $orders,
+            'orders'=> OrderResource::collection($orders),
             'book_reviews'=>$bookReviews,
             'order_reviews'=>$orderReviews,
         ];
