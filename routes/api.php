@@ -9,6 +9,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +62,10 @@ Route::group([], function() {
  Route::group(['middleware' => ['auth:sanctum']], function() {
 
      //Authenticated User
-    Route::get('/user/{id}', [AuthController::class, 'viewUser']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    //User
+    Route::get('/user', [UserController::class, 'viewUser']);
 
     //Books
     Route::post('/books', [BooksController::class, 'store']);
