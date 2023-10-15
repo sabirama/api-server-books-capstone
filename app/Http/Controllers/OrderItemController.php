@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class OrderItemController extends Controller
 {
      public function index() {
-        return OrderItem::all();
+        return OrderItem::query()->paginate(50);
     }
 
     //display by name

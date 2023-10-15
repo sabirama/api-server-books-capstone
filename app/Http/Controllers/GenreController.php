@@ -8,13 +8,13 @@ use App\Models\Genre;
 class GenreController extends Controller
 {
     public function index() {
-        return Genre::all();
+        return Genre::query()->paginate(50);
     }
 
     //display by name
     public function name(Request $request)
     {
-        return Genre::orderBy('name')->get();
+        return Genre::orderBy('name')->paginate(50);
     }
 
     //individual author

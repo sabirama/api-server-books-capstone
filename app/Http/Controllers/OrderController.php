@@ -9,14 +9,15 @@ use App\Http\Resources\OrderResource;
 class OrderController extends Controller
 {
     public function index() {
-        $orders = Order::all();
+        $orders = Order::query()->paginate(50);
         return OrderResource::collection($orders);
     }
 
     //display by name
     public function userId(Request $request)
     {
-        return Order::orderBy('user_id')->get();
+        $orders = Order::orderBy('user_id')->paginate(50);
+        return OrderResource::collection($orders);
     }
 
     public function perUser(Request $request,$userId)
@@ -28,7 +29,7 @@ class OrderController extends Controller
     public function show(Request $request,$userId, $id)
     {
         $userItems = Order::whereIn('user_id',[$userId])->get();
-        return $userItems->find($id);
+        return OrderResource::collection($userItems)->paginate(50);
     }
 
     //add new order
