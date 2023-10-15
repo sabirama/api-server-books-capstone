@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/log-in', function () {
+
+    return view('log-in');
+});

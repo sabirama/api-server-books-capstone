@@ -13,6 +13,6 @@ class UserController extends Controller
         $user = auth()->User();
        return new UserResource($user);
 
-
     }
+
 }

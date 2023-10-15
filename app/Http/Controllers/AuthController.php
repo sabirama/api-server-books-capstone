@@ -37,6 +37,7 @@ class AuthController extends Controller
             "user" => $user,
             "token" => $token
         ], 201);
+
     }
 
 
@@ -61,12 +62,13 @@ class AuthController extends Controller
                 'user' => $user,
                 'token' => $token
         ], 201);
-        }
-
-        return response( "Username does not exist");
 
         }
-        
+
+        return response("Username does not exist");
+
+        }
+
 
     public function logout(Request $request){
         auth()->User()->tokens()->delete();

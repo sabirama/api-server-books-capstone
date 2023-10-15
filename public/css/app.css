@@ -1,0 +1,57 @@
+:root {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(46, 78, 185);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+}
+
+form div {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    margin: 2rem;
+    padding: 0;
+}
+
+input {
+    margin: 1rem 0;
+    height: 1.5rem;
+}
+
+.main {
+    min-height: 80vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+}
+
+.page-title {
+    text-align: center;
+}

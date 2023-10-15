@@ -21,7 +21,7 @@ class BookDetailsFactory extends Factory
     {
         return [
             'body'=> fake()->paragraph(1),
-            'book_id'=>Book::pluck('id')->random(),
+            'book_id'=>Book::pluck('id')->unique()->random(),
             'genre_id'=>Genre::pluck('id')->random(),
             'author_id'=>Author::pluck('id')->random(),
         ];
