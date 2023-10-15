@@ -9,7 +9,7 @@ use App\Http\Resources\OrderResource;
 class OrderController extends Controller
 {
     public function index() {
-        $orders = Order::query()->paginate(50);
+        $orders = Order::query()->paginate(200);
         return OrderResource::collection($orders);
     }
 
