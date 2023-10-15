@@ -28,7 +28,7 @@ class BooksController extends Controller
     //display by name
     public function name(Request $request)
     {
-        return Book::orderBy('name')->paginate(200);
+        return Book::orderBy('title')->paginate(200);
     }
 
     //individual book

@@ -33,12 +33,11 @@ class AuthController extends Controller
 
         $token = $user->createToken("userAuth")->plainTextToken;
 
-        return response([
+         return response([
             "user" => $user,
             "token" => $token
         ], 201);
-
-    }
+}
 
 
     //log-in function
