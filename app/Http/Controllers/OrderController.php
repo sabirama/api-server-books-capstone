@@ -16,20 +16,20 @@ class OrderController extends Controller
     //display by name
     public function userId(Request $request)
     {
-        $orders = Order::orderBy('user_id')->paginate(50);
+        $orders = Order::orderBy('user_id')->paginate(200);
         return OrderResource::collection($orders);
-    }
-
-    public function perUser(Request $request,$userId)
-    {
-        return Order::whereIn('user_id',[$userId])->get();
     }
 
     //individual order
     public function show(Request $request,$userId, $id)
     {
         $userItems = Order::whereIn('user_id',[$userId])->get();
-        return OrderResource::collection($userItems)->paginate(50);
+        return OrderResource::collection($userItems)->paginate(200);
+    }
+
+        public function perUser(Request $request,$userId)
+    {
+        return Order::whereIn('user_id',[$userId])->get();
     }
 
     //add new order

@@ -9,7 +9,7 @@ use App\Models\OrderDetailsResource;
 class OrderDetailsController extends Controller
 {
     public function index() {
-        $orderDetails = OrderDetails::query()->paginate(50);
+        $orderDetails = OrderDetails::query()->paginate(200);
         return OrderDetailsResource::collection($orderDetails);
     }
 }

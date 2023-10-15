@@ -14,7 +14,7 @@ class BooksController extends Controller
 {
     public function index() {
 
-        $books = Book::query()->paginate(50);
+        $books = Book::query()->paginate(200);
        return BookResource::collection($books);
 
     }
@@ -22,13 +22,13 @@ class BooksController extends Controller
     //display latest
     public function latest(Request $request)
     {
-        return Book::orderBy('created_at', 'desc')->paginate(50);
+        return Book::orderBy('created_at', 'desc')->paginate(200);
     }
 
     //display by name
     public function name(Request $request)
     {
-        return Book::orderBy('name')->paginate(50);
+        return Book::orderBy('name')->paginate(200);
     }
 
     //individual book

@@ -8,13 +8,13 @@ use App\Models\Author;
 class AuthorController extends Controller
 {
     public function index() {
-        return Author::query()->paginate(50);
+        return Author::query()->paginate(200);
     }
 
     //display by name
     public function name(Request $request)
     {
-        return Author::orderBy('pen_name')->paginate(50);
+        return Author::orderBy('pen_name')->paginate(200);
     }
 
     //individual author
