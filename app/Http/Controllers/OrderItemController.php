@@ -11,7 +11,7 @@ class OrderItemController extends Controller
 {
      public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
-        return OrderItem::query()->paginate($page_size);
+        return OrderItem::query()->paginate($pageSize);
     }
 
     //display by name
