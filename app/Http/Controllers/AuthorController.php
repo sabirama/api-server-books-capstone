@@ -9,14 +9,14 @@ class AuthorController extends Controller
 {
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
-        return Author::query()->paginate($page_size);
+        return Author::query()->paginate($pagSize);
     }
 
     //display by name
     public function name(Request $request)
     {
         $pageSize = $request->page_size ?? 200;
-        return Author::orderBy('pen_name')->paginate($page_size);
+        return Author::orderBy('pen_name')->paginate($pageSize);
     }
 
     //individual author
