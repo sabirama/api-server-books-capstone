@@ -9,14 +9,16 @@ use App\Http\Resources\OrderResource;
 class OrderController extends Controller
 {
     public function index() {
-        $orders = Order::query()->paginate(200);
+        $pageSize = $request->page_size ?? 200;
+        $orders = Order::query()->paginate($page_size);
         return OrderResource::collection($orders);
     }
 
     //display by name
     public function userId(Request $request)
     {
-        $orders = Order::orderBy('user_id')->paginate(200);
+        $pageSize = $request->page_size ?? 200;
+        $orders = Order::orderBy('user_id')->paginate($page_size);
         return OrderResource::collection($orders);
     }
 

@@ -7,14 +7,16 @@ use App\Models\Genre;
 
 class GenreController extends Controller
 {
-    public function index() {
-        return Genre::query()->paginate(200);
+    public function index(Request $request) {
+        $pageSize = $request->page_size ?? 200;
+        return Genre::query()->paginate($page_size);
     }
 
     //display by name
     public function name(Request $request)
     {
-        return Genre::orderBy('name')->paginate(200);
+        $pageSize = $request->page_size ?? 200;
+        return Genre::orderBy('name')->paginate($page_size);
     }
 
     //individual author

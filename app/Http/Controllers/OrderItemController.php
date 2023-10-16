@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 
 class OrderItemController extends Controller
 {
-     public function index() {
-        return OrderItem::query()->paginate(200);
+     public function index(Request $request) {
+        $pageSize = $request->page_size ?? 200;
+        return OrderItem::query()->paginate($page_size);
     }
 
     //display by name

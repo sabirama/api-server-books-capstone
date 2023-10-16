@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 ./
 Dockerfiles
+cacert-2023-08-22.pem

@@ -8,8 +8,9 @@ use App\Models\OrderDetailsResource;
 
 class OrderDetailsController extends Controller
 {
-    public function index() {
-        $orderDetails = OrderDetails::query()->paginate(200);
+    public function index(Request $request) {
+        $pageSize = $request->page_size ?? 200;
+        $orderDetails = OrderDetails::query()->paginate($page_size);
         return OrderDetailsResource::collection($orderDetails);
     }
 }

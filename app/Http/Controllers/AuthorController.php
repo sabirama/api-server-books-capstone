@@ -7,14 +7,16 @@ use App\Models\Author;
 
 class AuthorController extends Controller
 {
-    public function index() {
-        return Author::query()->paginate(200);
+    public function index(Request $request) {
+        $pageSize = $request->page_size ?? 200;
+        return Author::query()->paginate($page_size);
     }
 
     //display by name
     public function name(Request $request)
     {
-        return Author::orderBy('pen_name')->paginate(200);
+        $pageSize = $request->page_size ?? 200;
+        return Author::orderBy('pen_name')->paginate($page_size);
     }
 
     //individual author

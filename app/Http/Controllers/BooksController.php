@@ -12,9 +12,9 @@ use App\Models\UserResource;
 
 class BooksController extends Controller
 {
-    public function index() {
-
-        $books = Book::query()->paginate(200);
+    public function index(Request $request) {
+        $pageSize = $request->page_size ?? 200;
+        $books = Book::query()->paginate($pageSize);
        return BookResource::collection($books);
 
     }
@@ -22,13 +22,15 @@ class BooksController extends Controller
     //display latest
     public function latest(Request $request)
     {
-        return Book::orderBy('created_at', 'desc')->paginate(200);
+        $pageSize = $request->page_size ?? 200;
+        return Book::orderBy('created_at', 'desc')->paginate($page_size);
     }
 
     //display by name
     public function name(Request $request)
     {
-        return Book::orderBy('title')->paginate(200);
+        $pageSize = $request->page_size ?? 200;
+        return Book::orderBy('title')->paginate($page_size);
     }
 
     //individual book
