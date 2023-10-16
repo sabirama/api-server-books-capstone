@@ -25,6 +25,7 @@ class OrderResource extends JsonResource
             'id'=>$this->id,
             'user'=>$user,
             'order_details'=>$orderDetails,
+            'order_review' => $orderReview
         ];
     }
 }

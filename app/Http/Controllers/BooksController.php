@@ -37,7 +37,7 @@ class BooksController extends Controller
     public function show(Request $request, $id)
     {
         $book = Book::find($id);
-        return new BookResource($id);
+        return new BookResource($book);
     }
 
     //add new book
