@@ -10,7 +10,7 @@ class OrderDetailsController extends Controller
 {
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
-        $orderDetails = OrderDetails::query()->paginate($page_size);
+        $orderDetails = OrderDetails::query()->paginate($pageSize);
         return OrderDetailsResource::collection($orderDetails);
     }
 }
