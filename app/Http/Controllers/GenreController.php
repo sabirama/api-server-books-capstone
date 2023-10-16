@@ -9,14 +9,14 @@ class GenreController extends Controller
 {
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
-        return Genre::query()->paginate($page_size);
+        return Genre::query()->paginate($pageSize);
     }
 
     //display by name
     public function name(Request $request)
     {
         $pageSize = $request->page_size ?? 200;
-        return Genre::orderBy('name')->paginate($page_size);
+        return Genre::orderBy('name')->paginate($pageSize);
     }
 
     //individual author
