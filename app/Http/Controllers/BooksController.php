@@ -23,14 +23,14 @@ class BooksController extends Controller
     public function latest(Request $request)
     {
         $pageSize = $request->page_size ?? 200;
-        return Book::orderBy('created_at', 'desc')->paginate($page_size);
+        return Book::orderBy('created_at', 'desc')->paginate($pageSize);
     }
 
     //display by name
     public function name(Request $request)
     {
         $pageSize = $request->page_size ?? 200;
-        return Book::orderBy('title')->paginate($page_size);
+        return Book::orderBy('title')->paginate($pageSize);
     }
 
     //individual book
