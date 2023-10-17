@@ -4,9 +4,13 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Models\User;
-use App\Models\OrderReview;
+
 use App\Models\OrderDetails;
+use App\Models\OrderReview;
+use App\Models\User;
+
+use App\Http\Resources\OrderDetailsResource;
+use App\Http\Resources\UserResource;
 
 class OrderResource extends JsonResource
 {
@@ -17,15 +21,18 @@ class OrderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $user = User::whereIn('id',[$this->user_id])->get(['first_name', 'last_name']);
-        $orderReview = OrderReview::whereIn('order_id',[$this->id])->get();
-        $orderDetails = OrderDetails::whereIn('id',[$this->order_details_id])->get();
+        $orderDetails = OrderDetails::find($this->order_details_id)->first();
+        $orderReview = OrderReview::whereIn('order_id', [$this->id])->get('id');
+        $user = User::whereIn('id',[$this->user_id])->first();
+
+        $orderDetailResource = new OrderDetailsResource($orderDetails);
+        $userResource = new UserResource($user);
 
         return [
-            'id'=>$this->id,
-            'user'=>$user,
-            'order_details'=>$orderDetails,
-            'order_review' => $orderReview
+            'id' => $this->id,
+            'user' => $user,
+            'order_details' => $orderDetail,
+            'order_review'=> $orderReview,
         ];
     }
 }

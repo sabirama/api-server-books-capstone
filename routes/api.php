@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ImageMediaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,23 +31,23 @@ Route::group([], function() {
 
     //Book Routes
     Route::get('/books', [BooksController::class, 'index']);
-    Route::get('/books:bylatest', [BooksController::class, 'latest']);
-    Route::get('/books:byname', [BooksController::class, 'name']);
+    Route::get('/books:latest', [BooksController::class, 'latest']);
+    Route::get('/books:name', [BooksController::class, 'name']);
     Route::get('/books/{id}', [BooksController::class, 'show']);
 
     //Author Routes
     Route::get('/authors', [AuthorController::class, 'index']);
-    Route::get('/authors:byname', [AuthorController::class, 'name']);
+    Route::get('/authors:name', [AuthorController::class, 'name']);
     Route::get('/authors/{id}', [AuthorController::class, 'show']);
 
     //Genre Routes
     Route::get('/genres', [GenreController::class, 'index']);
-    Route::get('/genres:byname', [GenreController::class, 'name']);
+    Route::get('/genres:name', [GenreController::class, 'name']);
     Route::get('/genres/{id}', [GenreController::class, 'show']);
 
     //Order Routes
     Route::get('/orders', [OrderController::class, 'index']);
-    Route::get('/orders:byuserId', [OrderController::class, 'userId']);
+    Route::get('/orders:user-id', [OrderController::class, 'userId']);
     Route::get('/orders/{userId}', [OrderController::class, 'perUser']);
     Route::get('/orders/{userId}/{id}', [OrderController::class, 'show']);
 
@@ -87,5 +88,10 @@ Route::group([], function() {
     Route::post('/orders', [GenreController::class, 'store']);
     Route::put('/orders/{id}', [GenreController::class, 'update']);
     Route::delete('/orders/{id}', [GenreController::class, 'destroy']);
+
+    //ImageMedia
+    Route::get('/image',[ImageMediaController::class, 'show']);
+    Route::post('/image',[ImageMediaController::class, 'create']);
+    Route::delete('/image',[ImageMediaController::class, 'destroy']);
 
  });

@@ -22,20 +22,20 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
-            "username" => $fields["username"],
-            "first_name" => $fields["first_name"],
-            "last_name" => $fields["last_name"],
-            "email" => $fields["email"],
-            "password" => bcrypt($fields["password"]),
-            "gender" => $fields["gender"],
-            "birthdate" => $fields["birthdate"]
+            'username' => $fields['username'],
+            'first_name' => $fields['first_name'],
+            'last_name' => $fields['last_name'],
+            'email' => $fields['email'],
+            'password' => bcrypt($fields['password']),
+            'gender' => $fields['gender'],
+            'birthdate' => $fields['birthdate']
         ]);
 
         $token = $user->createToken("userAuth")->plainTextToken;
 
          return response([
-            "user" => $user,
-            "token" => $token
+            'user' => $user,
+            'token' => $token
         ], 201);
 }
 
@@ -64,7 +64,7 @@ class AuthController extends Controller
 
         }
 
-        return response("Username does not exist");
+        return response('Username does not exist');
 
         }
 

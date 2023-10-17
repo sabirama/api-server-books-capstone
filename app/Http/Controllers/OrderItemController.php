@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\OrderItem;
+use App\Http\Resources\OrderItemResource;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class OrderItemController extends Controller
 {
      public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
-        return OrderItem::query()->paginate($pageSize);
+        $orderItems = OrderItem::query()->paginate($pageSize);
+        return OrderItemResource::collection($orderItems);
     }
 
     //display by name
@@ -20,7 +22,8 @@ class OrderItemController extends Controller
         $orderDetailId = Order::whereIn('user_id',[$userId])->get(['order_details_id']);
 
         if(OrderDetails::whereIn('id',[$orderDetailId])) {
-            return OrderItem::whereIn('id',[$id])->get();
+            $orderItem = OrderItem::whereIn('id',[$id])->get();
+            return OrderItemResource::collection($orderItem);
         }
 
 

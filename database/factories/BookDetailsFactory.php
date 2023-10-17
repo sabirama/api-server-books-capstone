@@ -19,9 +19,11 @@ class BookDetailsFactory extends Factory
      */
     public function definition(): array
     {
+
+
         return [
             'body'=> fake()->paragraph(1),
-            'book_id'=>Book::pluck('id')->unique()->random(),
+            'book_id'=>  fake()->unique()->numberBetween(1, 600),
             'genre_id'=>Genre::pluck('id')->random(),
             'author_id'=>Author::pluck('id')->random(),
         ];

@@ -9,7 +9,7 @@ use App\Http\Resources\OrderResource;
 class OrderController extends Controller
 {
     public function index(Request $request) {
-        $pageSize = $request->page_size ?? 20;
+        $pageSize = $request->page_size ?? 200;
         $orders = Order::query()->paginate($pageSize);
         return OrderResource::collection($orders);
     }
@@ -19,19 +19,26 @@ class OrderController extends Controller
     {
         $pageSize = $request->page_size ?? 200;
         $orders = Order::orderBy('user_id')->paginate($pageSize);
-        return OrderResource::collection($orders);
+        $orderResource = OrderResource::collection($orders);
+
+        return response([
+            'id' => $this->id,
+
+        ],200);
     }
 
     //individual order
     public function show(Request $request,$userId, $id)
     {
-        $userItems = Order::whereIn('user_id',[$userId])->get();
-        return OrderResource::collection($userItems)->paginate(200);
+        $userItems = Order::whereIn('user_id',[$userId])->whereIn('id',[$id])->get();
+        return OrderResource::collection($userItems);
     }
 
         public function perUser(Request $request,$userId)
     {
-        return Order::whereIn('user_id',[$userId])->get();
+        $pageSize = $request->page_size ?? 200;
+        $order = Order::whereIn('user_id',[$userId])->paginate($pageSize);
+        return OrderResource::collection($order);
     }
 
     //add new order

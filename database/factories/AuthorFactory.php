@@ -20,7 +20,7 @@ class AuthorFactory extends Factory
             'pen_name' => fake()->firstname(),
             'first_name'=> fake()->firstname(),
             'last_name'=> fake()->lastname(),
-            'details'=> fake()->paragraph(200)
+            'details'=> fake()->paragraph(2)
         ];
     }
 }

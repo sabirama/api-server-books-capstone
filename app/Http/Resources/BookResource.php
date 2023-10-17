@@ -4,8 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+
 use App\Models\BookDetails;
 use App\Models\BookReview;
+use App\Http\Resources\BookDetailsResource;
 
 class BookResource extends JsonResource
 {
@@ -17,15 +19,13 @@ class BookResource extends JsonResource
 
     public function toArray(Request $request): array
     {
-        $bookDetails = BookDetails::whereIn('book_id', [$this->id])->get();
-        $bookReview = BookReview::whereIn('book_id', [$this->id])->get();
-
+        $bookDetails = BookDetails::whereIn('book_id',[$this->id])->first();
+        $bookDetailsResource = new BookDetailsResource($bookDetails);
         return [
             'id'=> $this->id,
             'title' => $this->title,
             'price' => $this->price,
-            'book_detail' => $bookDetails,
-            'book_review' => $bookReview,
+            'book_details' => $bookDetails,
         ];
     }
 }

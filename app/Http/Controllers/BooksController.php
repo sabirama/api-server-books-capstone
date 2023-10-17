@@ -15,22 +15,26 @@ class BooksController extends Controller
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
         $books = Book::query()->paginate($pageSize);
-       return BookResource::collection($books);
+        return BookResource::collection($books);
 
     }
 
     //display latest
     public function latest(Request $request)
     {
+
         $pageSize = $request->page_size ?? 200;
-        return Book::orderBy('created_at', 'desc')->paginate($pageSize);
+        $books = Book::orderBy('created_at', 'desc')->paginate($pageSize);
+        return BookResource::collection($books);
     }
 
     //display by name
     public function name(Request $request)
     {
+
         $pageSize = $request->page_size ?? 200;
-        return Book::orderBy('title')->paginate($pageSize);
+        $books =  Book::orderBy('title')->paginate($pageSize);
+        return BookResource::collection($books);
     }
 
     //individual book
