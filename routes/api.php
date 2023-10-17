@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderReviewController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
@@ -35,6 +37,12 @@ Route::group([], function() {
     Route::get('/books:name', [BooksController::class, 'name']);
     Route::get('/books/{id}', [BooksController::class, 'show']);
 
+    //BookReview Routes
+    Route::get('/book-reviews', [BookReviewController::class, 'index']);
+    Route::get('/book-reviews/user', [BookReviewController::class, 'perUser']);
+    Route::get('/book-reviews/{id}', [BookReviewController::class, 'singleReview']);
+
+
     //Author Routes
     Route::get('/authors', [AuthorController::class, 'index']);
     Route::get('/authors:name', [AuthorController::class, 'name']);
@@ -51,6 +59,11 @@ Route::group([], function() {
     Route::get('/orders/{userId}', [OrderController::class, 'perUser']);
     Route::get('/orders/{userId}/{id}', [OrderController::class, 'show']);
 
+    //OrderReview Routes
+    Route::get('/order-review', [OrderReviewController::class, 'index']);
+    Route::get('/order-reviews/user', [OrderReviewController::class, 'perUser']);
+    Route::get('/order-reviews/{id}', [OrderReviewController::class, 'singleReview']);
+
     //Order Details Routes
     Route::get('/order-details', [OrderDetailsController::class, 'index']);
     Route::get('/order-details/{id}', [OrderDetailsController::class, 'singleItem']);
@@ -62,7 +75,6 @@ Route::group([], function() {
     //Image Media
     Route::get('/images',[ImageMediaController::class, 'index']);
     Route::get('/image',[ImageMediaController::class, 'show']);
-
 
 //Routes to be put to authentication
 
@@ -82,6 +94,11 @@ Route::group([], function() {
     Route::put('/books/{id}', [BooksController::class, 'update']);
     Route::delete('/books/{id}', [BooksController::class, 'destroy']);
 
+    //BooksReview
+    Route::post('/book-reviews', [BooksController::class, 'store']);
+    Route::put('/book-reviews/{id}', [BooksController::class, 'update']);
+    Route::delete('/book-reviews/{id}', [BooksController::class, 'destroy']);
+
     //Author
     Route::post('/authors', [AuthorController::class, 'store']);
     Route::put('/authors/{id}', [AuthorController::class, 'update']);
@@ -96,6 +113,11 @@ Route::group([], function() {
     Route::post('/orders', [GenreController::class, 'store']);
     Route::put('/orders/{id}', [GenreController::class, 'update']);
     Route::delete('/orders/{id}', [GenreController::class, 'destroy']);
+
+    //OrderReviews
+    Route::post('/order-reviews', [BooksController::class, 'store']);
+    Route::put('/order-reviews/{id}', [BooksController::class, 'update']);
+    Route::delete('/order-reviews/{id}', [BooksController::class, 'destroy']);
 
     //Order Items
     Route::post('/order-items', [GenreController::class, 'store']);

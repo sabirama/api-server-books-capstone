@@ -52,15 +52,14 @@ class OrderItemController extends Controller
     //delete
     public function destroy($id)
     {
-        if(OrderItem::where('id',$id)) {
-            $orderItems = OrderItem::find($id);
-            $newOrderItems = $orderItems->delete();
 
-            return response([
-              'order_item' =>  $newOrderItems,
-              'message' => 'order item removed'
-            ]);
-        }
+        $orderItems = OrderItem::find($id);
+        $newOrderItems = $orderItems->delete();
+
+        return response([
+            'order_item' =>  $newOrderItems,
+            'message' => 'order item removed'
+        ]);
     }
 
 }

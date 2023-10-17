@@ -75,12 +75,12 @@ class BooksController extends Controller
     //delete
     public function destroy($id)
     {
-        if(Book::where('id',$id)) {
-            $book = Book::find($id);
-            $book->delete();
 
-            return [$book, 'file removed'];
-        }
+        $book = Book::find($id);
+        $book->delete();
+
+        return [$book, 'file removed'];
+
     }
 
 }

@@ -60,14 +60,13 @@ class GenreController extends Controller
     //delete
     public function destroy($id)
     {
-        if(Genre::where('id',$id)) {
-            $genre = Genre::find($id);
-            $genre->delete();
 
-            return response([
-                'genre' => $genre,
-                'nessage' => 'file removed'
-            ]);
-        }
+        $genre = Genre::find($id);
+        $genre->delete();
+
+        return response([
+            'genre' => $genre,
+            'nessage' => 'file removed'
+        ]);
     }
 }

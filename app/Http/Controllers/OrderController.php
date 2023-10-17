@@ -63,11 +63,9 @@ class OrderController extends Controller
     //delete
     public function destroy($id)
     {
-        if(Order::where('id',$id)) {
-            $order = Order::find($id);
-            $order->delete();
+        $order = Order::find($id);
+        $order->delete();
 
-            return [$order, 'file removed'];
-        }
+        return [$order, 'file removed'];
     }
 }

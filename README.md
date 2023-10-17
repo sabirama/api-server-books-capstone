@@ -15,6 +15,12 @@ _/
     Route::get - '/books:name',
     Route::get - '/books/{id}',
 
+     //BookReview Routes
+    Route::get - '/book-reviews',
+    Route::get - '/book-reviews/user',
+    Route::get - '/book-reviews/{id}',
+
+
     //Author Routes
     Route::get - '/authors',
     Route::get - '/authors:name',
@@ -30,6 +36,11 @@ _/
     Route::get - '/orders:user-id',
     Route::get - '/orders/{userId}',
     Route::get - '/orders/{userId}/{id}',
+
+    //Order Review Routes
+    Route::get - '/order-review',
+    Route::get -'/order-reviews/user',
+    Route::get - '/order-reviews/{id}',
 
     //Order Details Routes
     Route::get - '/order-details',
@@ -58,6 +69,11 @@ _/
     Route::put - '/books/{id}',
     Route::delete - '/books/{id}',
 
+     //BooksReview
+    Route::post - '/book-reviews',
+    Route::put - '/book-reviews/{id}',
+    Route::delete - '/book-reviews/{id}',
+
     //Author
     Route::post - '/authors',
     Route::put - '/authors/{id}',
@@ -72,6 +88,11 @@ _/
     Route::post - '/orders',
     Route::put - '/orders/{id}',
     Route::delete - '/orders/{id}',
+
+     //Order Review
+    Route::post - '/order-reviews',
+    Route::put - '/order-reviews/{id}',
+    Route::delete - '/order-reviews/{id}',
 
     //Order Items
     Route::post - '/order-items',

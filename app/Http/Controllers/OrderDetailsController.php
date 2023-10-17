@@ -47,12 +47,12 @@ class OrderDetailsController extends Controller
     //delete
     public function destroy($id)
     {
-            $orderDetails = OrderDetails::find($id);
-            $newOrderDetails = $orderDetails->delete();
+        $orderDetails = OrderDetails::find($id);
+        $newOrderDetails = $orderDetails->delete();
 
-            return response([
-              'order_details' =>  $newOrderDetails,
-              'message' => 'order details removed'
-            ]);
+        return response([
+            'order_details' =>  $newOrderDetails,
+            'message' => 'order details removed'
+        ]);
     }
 }

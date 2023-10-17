@@ -55,14 +55,14 @@ class AuthorController extends Controller
     //delete
     public function destroy($id)
     {
-        if(Author::where('id',$id)) {
-            $author = Author::find($id);
-            $author->delete();
 
-            return response([
-                $author,
-                'file removed'
-            ]);
-        }
+        $author = Author::find($id);
+        $author->delete();
+
+        return response([
+            $author,
+            'file removed'
+        ]);
+
     }
 }
