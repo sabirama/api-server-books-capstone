@@ -14,6 +14,7 @@ class OrderDetailsController extends Controller
         return OrderDetailsResource::collection($orderDetails);
     }
 
+    //retturn a single item of order details
     public function singleItem(Request $request, $id)
     {
         $orderDetail = OrderDetails::find($id);

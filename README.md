@@ -1,98 +1,95 @@
-Route Paths
+/_
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+_/
 
---
-User paths
+    //User Auth Routes
+    Route::post - '/register',
+    Route::post - '/login',
 
-post:
-/register
-/login
+    //Book Routes
+    Route::get - '/books',
+    Route::get - '/books:latest',
+    Route::get - '/books:name',
+    Route::get - '/books/{id}',
 
-authenticated paths
+    //Author Routes
+    Route::get - '/authors',
+    Route::get - '/authors:name',
+    Route::get - '/authors/{id}',
 
-post:
-/logout
+    //Genre Routes
+    Route::get - '/genres',
+    Route::get - '/genres:name',
+    Route::get - '/genres/{id}',
 
-get:
-/user/{id}
---
+    //Order Routes
+    Route::get - '/orders',
+    Route::get - '/orders:user-id',
+    Route::get - '/orders/{userId}',
+    Route::get - '/orders/{userId}/{id}',
 
---
-Books paths
+    //Order Details Routes
+    Route::get - '/order-details',
+    Route::get - '/order-details/{id}',
 
-get:
-/books --return all books
-/books:bylatest --return books by latest
-/books:byname --return books by name
-/books/{id} --return individual book
+    //Order Items Routes
+    Route::get - '/order-items',
+    Route::get - '/order-items/{userId}/{id}',
 
-authenticated paths
+    //Image Media
+    Route::get - '/images',
+    Route::get - '/image',
 
-post:
-/books --add new book to database
+---
 
-put:
-/books/{id} --update a books properties in the database
+// Protected Resource Routes requires bearer token
+//Authenticated User
 
-delete:
-/books/{id} --remove a book from the database
---
+    Route::post - '/logout',
 
---
-Author paths
+    //User
+    Route::get - '/user',
 
-get:
-/authors --return all authors
-/authors:byname --return authors by name
-/authors/{id} --return individual author
+    //Books
+    Route::post - '/books',
+    Route::put - '/books/{id}',
+    Route::delete - '/books/{id}',
 
-authenticated paths
+    //Author
+    Route::post - '/authors',
+    Route::put - '/authors/{id}',
+    Route::delete - '/authors/{id}',
 
-post:
-/authors --add new author to database
+    //Genre
+    Route::post - '/genres',
+    Route::put - '/genres/{id}',
+    Route::delete - '/genres/{id}',
 
-put:
-/authors/{id} --return individual author to database
+    //Order
+    Route::post - '/orders',
+    Route::put - '/orders/{id}',
+    Route::delete - '/orders/{id}',
 
-delete:
-/authors/{id} --remove author from database
---
+    //Order Items
+    Route::post - '/order-items',
+    Route::put - '/order-items/{id}',
+    Route::delete - '/order-items/{id}',
 
---
-Genre paths
+    //OrderDetails
+    Route::post - '/order-details',
+    Route::put - '/order-details/{id}',
+    Route::delete - '/order-details/{id}',
 
-get:
-/genres --return all genres
-/genres:byname --return genres by name
-/genres/{id} --return a specific genre
+    //ImageMedia
+    Route::post - '/image',
+    Route::delete - '/image',
 
-authenticated paths
-
-post:
-/genres --add new genre to database
-
-put:
-/genres/{id} --edit genre property in the database
-
-delete:
-/genres/{id} --remove a genre from database
---
-
---
-Order paths
-
-get:
-/order --return all order
-/order:by-user-id --return order by 'user_id'
-/order/{userId} --return a specific user order
-/order/{userId}/{id} --return a specific order using 'user_id' and 'order_id'
-
-authenticated paths
-
-post:
-/order --add new order to database
-
-put:
-/order/{id} --edit order property in the database
-
-delete:
-/order/{id} --remove a order from database
+/_
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+_/

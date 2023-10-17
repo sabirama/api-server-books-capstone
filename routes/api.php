@@ -51,9 +51,17 @@ Route::group([], function() {
     Route::get('/orders/{userId}', [OrderController::class, 'perUser']);
     Route::get('/orders/{userId}/{id}', [OrderController::class, 'show']);
 
+    //Order Details Routes
+    Route::get('/order-details', [OrderDetailsController::class, 'index']);
+    Route::get('/order-details/{id}', [OrderDetailsController::class, 'singleItem']);
+
     //Order Items Routes
     Route::get('/order-items', [OrderItemController::class, 'index']);
     Route::get('/order-items/{userId}/{id}', [OrderItemController::class, 'singleItem']);
+
+    //Image Media
+    Route::get('/images',[ImageMediaController::class, 'index']);
+    Route::get('/image',[ImageMediaController::class, 'show']);
 
 
 //Routes to be put to authentication
@@ -89,8 +97,17 @@ Route::group([], function() {
     Route::put('/orders/{id}', [GenreController::class, 'update']);
     Route::delete('/orders/{id}', [GenreController::class, 'destroy']);
 
+    //Order Items
+    Route::post('/order-items', [GenreController::class, 'store']);
+    Route::put('/order-items/{id}', [GenreController::class, 'update']);
+    Route::delete('/order-items/{id}', [GenreController::class, 'destroy']);
+
+    //OrderDetails
+    Route::post('/order-details', [OrderDetailsController::class, 'store']);
+    Route::put('/order-details/{id}', [OrderDetailsController::class, 'update']);
+    Route::delete('/order-details/{id}', [OrderDetailsController::class, 'destroy']);
+
     //ImageMedia
-    Route::get('/image',[ImageMediaController::class, 'show']);
     Route::post('/image',[ImageMediaController::class, 'create']);
     Route::delete('/image',[ImageMediaController::class, 'destroy']);
 

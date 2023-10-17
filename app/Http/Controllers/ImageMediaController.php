@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Storage;
 class ImageMediaController extends Controller
 {
 
+    public function index(Request $request) {
+        $images = ImageMedia::all();
+        return response([
+            'images' => $images,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -44,7 +51,7 @@ class ImageMediaController extends Controller
      * Display the specified resource.
      */
     public function show(Request $request)
-    { 
+    {
         $image = ImageMedia::find($request->get([$associated_id,$type]));
         return response([
             'image'=>$image,
