@@ -13,7 +13,7 @@ use App\Models\UserResource;
 class BooksController extends Controller
 {
     public function index(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 150;
         $books = Book::query()->paginate($pageSize);
 
         return response([
@@ -27,7 +27,7 @@ class BooksController extends Controller
     public function latest(Request $request)
     {
 
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $books = Book::orderBy('created_at', 'desc')->paginate($pageSize);
         return response([
             'books' =>  BookResource::collection($books),
@@ -38,7 +38,7 @@ class BooksController extends Controller
     public function name(Request $request)
     {
 
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $books =  Book::orderBy('title')->paginate($pageSize);
         return response([
             'books' =>  BookResource::collection($books),

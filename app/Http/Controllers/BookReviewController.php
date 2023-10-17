@@ -8,7 +8,7 @@ use App\Models\BookReview;
 class BookReviewController extends Controller
 {
     public function index(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $bookReviews = BookReview::query()->paginate($pageSize);
 
         return response([
@@ -18,7 +18,7 @@ class BookReviewController extends Controller
     }
 
     public function perUser(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $userId = $request->user_id ?? "";
         $bookReviews = BookReview::whereIn('user_id',[$userId])->paginate($pageSize);
 
@@ -31,7 +31,7 @@ class BookReviewController extends Controller
     public function latest(Request $request)
     {
 
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $bookReviews = BookReview::orderBy('created_at', 'desc')->paginate($pageSize);
         return response([
             'books_reviews' =>  $bookReviews,

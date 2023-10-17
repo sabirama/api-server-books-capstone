@@ -38,7 +38,7 @@ _/
     Route::get - '/orders/{userId}/{id}',
 
     //Order Review Routes
-    Route::get - '/order-review',
+    Route::get - '/order-reviews',
     Route::get -'/order-reviews/user',
     Route::get - '/order-reviews/{id}',
 
@@ -114,3 +114,10 @@ _/
 |--------------------------------------------------------------------------
 |
 _/
+
+Queries 
+
+//for pages
+page count - page_size
+
+//for image

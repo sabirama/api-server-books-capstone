@@ -10,7 +10,8 @@ class ImageMediaController extends Controller
 {
 
     public function index(Request $request) {
-        $images = ImageMedia::all();
+        $pageSize = $request->page_size ?? 100;
+        $images = ImageMedia::query()->paginate($pageSize);
         return response([
             'images' => $images,
         ]);

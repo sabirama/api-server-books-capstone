@@ -24,7 +24,7 @@ class OrderResource extends JsonResource
         $orderDetails = OrderDetails::find($this->order_details_id)->first();
         $orderReview = OrderReview::whereIn('order_id', [$this->id])->get('id');
         $user = User::whereIn('id',[$this->user_id])->first();
-
+        
         $orderDetailResource = new OrderDetailsResource($orderDetails);
         $userResource = new UserResource($user);
 

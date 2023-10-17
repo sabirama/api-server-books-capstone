@@ -29,21 +29,22 @@ class OrderController extends Controller
         ],201);
     }
 
+    public function perUser(Request $request,$userId)
+    {
+        $pageSize = $request->page_size ?? 50;
+        $order = Order::whereIn('user_id',[$userId])->paginate($pageSize);
+        return response([
+           'oreder'=> OrderResource::collection($order),
+        ],201);
+    }
+
+
     //individual order
     public function show(Request $request,$userId, $id)
     {
         $userItems = Order::whereIn('user_id',[$userId])->whereIn('id',[$id])->get();
         return response([
             'orders' => OrderResource::collection($userItems),
-        ],201);
-    }
-
-        public function perUser(Request $request,$userId)
-    {
-        $pageSize = $request->page_size ?? 200;
-        $order = Order::whereIn('user_id',[$userId])->paginate($pageSize);
-        return response([
-           'oreder'=> OrderResource::collection($order),
         ],201);
     }
 

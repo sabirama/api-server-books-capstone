@@ -9,7 +9,7 @@ use App\Models\OrderDetailsResource;
 class OrderDetailsController extends Controller
 {
     public function index(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $orderDetails = OrderDetails::query()->paginate($pageSize);
         return OrderDetailsResource::collection($orderDetails);
     }

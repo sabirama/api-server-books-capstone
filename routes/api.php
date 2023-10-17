@@ -60,7 +60,7 @@ Route::group([], function() {
     Route::get('/orders/{userId}/{id}', [OrderController::class, 'show']);
 
     //OrderReview Routes
-    Route::get('/order-review', [OrderReviewController::class, 'index']);
+    Route::get('/order-reviews', [OrderReviewController::class, 'index']);
     Route::get('/order-reviews/user', [OrderReviewController::class, 'perUser']);
     Route::get('/order-reviews/{id}', [OrderReviewController::class, 'singleReview']);
 
@@ -88,6 +88,7 @@ Route::group([], function() {
 
     //User
     Route::get('/user', [UserController::class, 'viewUser']);
+    Route::get('/users', [UserController::class, 'allUsers']);
 
     //Books
     Route::post('/books', [BooksController::class, 'store']);

@@ -8,7 +8,7 @@ use App\Models\OrderReview;
 class OrderReviewController extends Controller
 {
     public function index(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $orderReview = OrderReview::query()->paginate($pageSize);
 
         return response([
@@ -19,7 +19,7 @@ class OrderReviewController extends Controller
     }
 
     public function perUser(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $userId = $request->user_id ?? "";
         $orderReview = OrderReview::whereIn('user_id',[$userId])->paginate($pageSize);
 
@@ -32,7 +32,7 @@ class OrderReviewController extends Controller
     public function latest(Request $request)
     {
 
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $orderReview = OrderReview::orderBy('created_at', 'desc')->paginate($pageSize);
         return response([
             'order_review' =>  $orderReview,

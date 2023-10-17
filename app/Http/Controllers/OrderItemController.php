@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class OrderItemController extends Controller
 {
      public function index(Request $request) {
-        $pageSize = $request->page_size ?? 200;
+        $pageSize = $request->page_size ?? 100;
         $orderItems = OrderItem::query()->paginate($pageSize);
         $itemResource = OrderItemResource::collection($orderItems);
         return response([
