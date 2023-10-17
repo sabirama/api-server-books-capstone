@@ -30,8 +30,8 @@ class OrderResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'user' => $user,
-            'order_details' => $orderDetail,
+            'user' => $userResource,
+            'order_details' => $orderDetailResource,
             'order_review'=> $orderReview,
         ];
     }

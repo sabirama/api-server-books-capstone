@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('pen_name');
             $table->string('first_name');
             $table->string('last_name');
-            $table->text('details');
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }

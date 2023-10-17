@@ -13,20 +13,54 @@ class OrderItemController extends Controller
      public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
         $orderItems = OrderItem::query()->paginate($pageSize);
-        return OrderItemResource::collection($orderItems);
+        $itemResource = OrderItemResource::collection($orderItems);
+        return response([
+            'order_items' => $itemResource,
+        ],201);
     }
 
     //display by name
-    public function singleItem(Request $request, $userId, $id)
+    public function singleItem(Request $request,  $id)
     {
-        $orderDetailId = Order::whereIn('user_id',[$userId])->get(['order_details_id']);
+        $orderItemId = OrderItem::fidn($id);
+        return response([
+            'order_item' => $orderItemId
+        ],201);
+    }
 
-        if(OrderDetails::whereIn('id',[$orderDetailId])) {
-            $orderItem = OrderItem::whereIn('id',[$id])->get();
-            return OrderItemResource::collection($orderItem);
+    public function store(Request $request)
+    {
+        $orderItems = OrderItem::create($request->all());
+        return response ([
+            'order_deails' => $orderItems,
+            'message' => 'order item added to database'
+        ],201);
+    }
+
+    //update
+    public function update(Request $request, $id)
+    {
+        $orderItems = OrderItem::find($id);
+        $newOrderItems = $orderItems->update($request->all());
+
+        return response ([
+            'order_deails' => $$newOrderItems,
+            'message' => 'order item updated'
+        ],201);
+    }
+
+    //delete
+    public function destroy($id)
+    {
+        if(OrderItem::where('id',$id)) {
+            $orderItems = OrderItem::find($id);
+            $newOrderItems = $orderItems->delete();
+
+            return response([
+              'order_item' =>  $newOrderItems,
+              'message' => 'order item removed'
+            ]);
         }
-
-
     }
 
 }

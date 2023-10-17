@@ -13,4 +13,45 @@ class OrderDetailsController extends Controller
         $orderDetails = OrderDetails::query()->paginate($pageSize);
         return OrderDetailsResource::collection($orderDetails);
     }
+
+    public function singleItem(Request $request, $id)
+    {
+        $orderDetail = OrderDetails::find($id);
+        return response([
+            'order_detail' => $orderDetail,
+        ]);
+    }
+
+     public function store(Request $request)
+    {
+        $orderDetails = OrderDetails::create($request->all());
+        return response ([
+            'order_deails' => $orderDetails,
+            'message' => 'order details added to database'
+        ],201);
+    }
+
+    //update
+    public function update(Request $request, $id)
+    {
+        $orderDetails = OrderDetails::find($id);
+        $newOderDetails = $orderDetails->update($request->all());
+
+        return response ([
+            'order_deails' => $$newOderDetails,
+            'message' => 'order details updated'
+        ],201);
+    }
+
+    //delete
+    public function destroy($id)
+    {
+            $orderDetails = OrderDetails::find($id);
+            $newOrderDetails = $orderDetails->delete();
+
+            return response([
+              'order_details' =>  $newOrderDetails,
+              'message' => 'order details removed'
+            ]);
+    }
 }
