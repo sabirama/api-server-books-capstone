@@ -120,3 +120,7 @@ page count - page_size
 //for image
 image type - image_type
 associated id - associated_id
+
+//image types
+user_image,
+book_image
