@@ -13,7 +13,8 @@ class Genre extends Model
 
      protected $fillable = [
         'name',
-        'details'
+        'details',
+        'book_details_id'
     ];
 
     public function books(): HasMany

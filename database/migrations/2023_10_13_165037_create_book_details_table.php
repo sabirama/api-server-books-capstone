@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->text('body');
             $table->integer('book_id');
-            $table->integer('genre_id');
             $table->integer('author_id');
             $table->timestamps();
         });

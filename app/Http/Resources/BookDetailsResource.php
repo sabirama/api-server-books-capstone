@@ -18,7 +18,7 @@ class BookDetailsResource extends JsonResource
 
     public function toArray(Request $request): array
     {
-        $genres = Genre::whereIn('id',[$this->genre_id])->get();
+        $genres = Genre::whereIn('book_details_id',[$this->id])->get();
         $author = Author::find($this->author_id);
 
         return [
