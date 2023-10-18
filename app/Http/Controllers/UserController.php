@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use App\Models\ImageMedia;
 
 class UserController extends Controller
 {
@@ -11,13 +12,12 @@ class UserController extends Controller
 
     public function viewUser() {
 
-
         $user = auth()->User();
-
-        return response([
+        $image = ImageMedia::whereIn("image_type",["user_image"])->whereIn("associated_id",[$user->id])->get()->first();
+        return[
             'user'=> new UserResource($user),
             'user_image' => $image,
-        ]);
+        ];
 
     }
 
