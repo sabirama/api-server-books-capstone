@@ -18,7 +18,7 @@ class GenreFactory extends Factory
     public function definition(): array
     {   $genres = [
         'action',
-        'drama'.
+        'drama',
         'fantasy',
         'sci-fi',
         'adventure',
