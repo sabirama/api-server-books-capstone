@@ -38,7 +38,7 @@ class BookReviewController extends Controller
         ],201);
     }
 
-    //display by name
+    //individual book
     public function singleReview($id)
     {
         $bookReviews =  BookReview::find($id);
@@ -47,7 +47,7 @@ class BookReviewController extends Controller
         ],201);
     }
 
-    //individual book
+    //display by user
     public function show(Request $request, $userId)
     {
         $bookReviews = BookReview::wherIn('user_id',$userId);
@@ -57,7 +57,7 @@ class BookReviewController extends Controller
 
     }
 
-    //add new book
+    //add new book review
     public function store(Request $request)
     {   $bookReviews = BookReview::create($request->all());
 

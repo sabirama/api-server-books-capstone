@@ -17,6 +17,27 @@ class ImageMediaController extends Controller
         ]);
     }
 
+    public function byQuery(Request $request) {
+        $pageSize = $request->page_size ?? 100;
+        $imageType = $request->image_type;
+        $associatedId = $request->associated_id;
+        $images = ImageMedia::whereIn('image_type', [$imageType])->whereIn('associated_id', [$associatedId])->paginate($pageSize);
+        return response([
+            'images' => $images,
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $image = ImageMedia::find($id);
+        return response([
+            'image'=>$image,
+        ],200);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -35,7 +56,7 @@ class ImageMediaController extends Controller
 
         $image = ImageMedia::create([
                 'image_path' =>  $filepath,
-                'image_type' => $request->type,
+                'image_type' => $request->image_type,
                 'associated_id' => $request->associated_id
             ]);
 
@@ -44,19 +65,6 @@ class ImageMediaController extends Controller
             'message'=> 'file uploaded'
         ],200);
 
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request)
-    {
-        $image = ImageMedia::find($request->get([$associated_id,$type]));
-        return response([
-            'image'=>$image,
-        ],200);
     }
 
     /**

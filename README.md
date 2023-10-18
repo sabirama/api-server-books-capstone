@@ -48,9 +48,10 @@
     Route::get - '/order-items',
     Route::get - '/order-items/{userId}/{id}',
 
-    //Image Media
+    //Images
     Route::get - '/images',
-    Route::get - '/image',
+    Route::get - '/images/query'
+    Route::get - '/images/{id}',
 
 ---
 
@@ -103,17 +104,19 @@
     Route::delete - '/order-details/{id}',
 
     //ImageMedia
-    Route::post - '/image',
-    Route::delete - '/image',
+    Route::post - '/images',
+    Route::delete - '/images',
 
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
 |
 
-Queries 
+Queries
 
 //for pages
 page count - page_size
 
 //for image
+image type - image_type
+associated id - associated_id

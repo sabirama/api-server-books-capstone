@@ -34,7 +34,7 @@ class OrderController extends Controller
         $pageSize = $request->page_size ?? 50;
         $order = Order::whereIn('user_id',[$userId])->paginate($pageSize);
         return response([
-           'oreder'=> OrderResource::collection($order),
+           'orders'=> OrderResource::collection($order),
         ],201);
     }
 

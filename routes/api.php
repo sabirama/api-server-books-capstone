@@ -74,7 +74,8 @@ Route::group([], function() {
 
     //Image Media
     Route::get('/images',[ImageMediaController::class, 'index']);
-    Route::get('/image',[ImageMediaController::class, 'show']);
+    Route::get('/images/query',[ImageMediaController::class, 'byQuery']);
+    Route::get('/images/{id}',[ImageMediaController::class, 'show']);
 
 //Routes to be put to authentication
 
@@ -131,7 +132,7 @@ Route::group([], function() {
     Route::delete('/order-details/{id}', [OrderDetailsController::class, 'destroy']);
 
     //ImageMedia
-    Route::post('/image',[ImageMediaController::class, 'create']);
-    Route::delete('/image',[ImageMediaController::class, 'destroy']);
+    Route::post('/images',[ImageMediaController::class, 'create']);
+    Route::delete('/images',[ImageMediaController::class, 'destroy']);
 
  });

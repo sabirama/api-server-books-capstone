@@ -50,7 +50,7 @@ class BooksController extends Controller
     {
         $book = Book::find($id);
         return response([
-            'books' =>  new BookResource($book),
+            'book' =>  new BookResource($book),
         ],201);
 
     }

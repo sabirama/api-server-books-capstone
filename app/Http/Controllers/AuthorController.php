@@ -10,7 +10,7 @@ class AuthorController extends Controller
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
         return response([
-           'author' => Author::query()->paginate($pageSize)
+           'authors' => Author::query()->paginate($pageSize)
         ],201);
     }
 
@@ -19,7 +19,7 @@ class AuthorController extends Controller
     {
         $pageSize = $request->page_size ?? 200;
         return response([
-           'author'=> Author::orderBy('pen_name')->paginate($pageSize),
+           'authors'=> Author::orderBy('pen_name')->paginate($pageSize),
         ],201);
     }
 

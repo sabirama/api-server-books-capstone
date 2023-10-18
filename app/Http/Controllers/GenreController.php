@@ -10,7 +10,7 @@ class GenreController extends Controller
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 100;
         return response([
-          'genre'=> Genre::query()->paginate($pageSize)
+          'genres'=> Genre::query()->paginate($pageSize)
         ],201);
     }
 
@@ -19,7 +19,7 @@ class GenreController extends Controller
     {
         $pageSize = $request->page_size ?? 100;
         return response([
-          'genre'=> Genre::orderBy('name')->paginate($pageSize)
+          'genres'=> Genre::orderBy('name')->paginate($pageSize)
         ],201);
 
     }
