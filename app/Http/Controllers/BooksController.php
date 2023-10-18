@@ -16,12 +16,11 @@ class BooksController extends Controller
         $pageSize = $request->page_size ?? 150;
         $books = Book::query()->paginate($pageSize);
 
-        return response([
-            'books' =>  BookResource::collection($books),
-        ],201);
-
+        return BookResource::collection($books);
 
     }
+
+
 
     //display latest
     public function latest(Request $request)
@@ -29,9 +28,9 @@ class BooksController extends Controller
 
         $pageSize = $request->page_size ?? 100;
         $books = Book::orderBy('created_at', 'desc')->paginate($pageSize);
-        return response([
-            'books' =>  BookResource::collection($books),
-        ],201);
+
+        return ['books' =>BookResource::collection($books)];
+
     }
 
     //display by name
@@ -40,18 +39,18 @@ class BooksController extends Controller
 
         $pageSize = $request->page_size ?? 100;
         $books =  Book::orderBy('title')->paginate($pageSize);
-        return response([
-            'books' =>  BookResource::collection($books),
-        ],201);
+
+        return ['books' => BookResource::collection($books)];
+
     }
 
     //individual book
     public function show(Request $request, $id)
     {
         $book = Book::find($id);
-        return response([
-            'book' =>  new BookResource($book),
-        ],201);
+
+        return ['books' => new BookResource($book)];
+
 
     }
 
@@ -59,10 +58,10 @@ class BooksController extends Controller
     public function store(Request $request)
     {   $book = Book::create($request->all());
 
-        return response([
+        return [
             'book'=>$book,
             'message'=>'book added to database'
-        ]);
+        ];
     }
 
     //update
@@ -70,6 +69,8 @@ class BooksController extends Controller
     {
         $book = Book::find($id);
         $book->update($request->all());
+
+        return [$books , 'book updated'];
     }
 
     //delete

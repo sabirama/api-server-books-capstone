@@ -11,9 +11,9 @@ class OrderController extends Controller
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 50;
         $orders = Order::query()->paginate($pageSize);
-        return response([
+        return [
             'order' => OrderResource::collection($orders),
-        ],201);
+        ];
     }
 
     //display by name
@@ -23,19 +23,19 @@ class OrderController extends Controller
         $orders = Order::orderBy('user_id')->paginate($pageSize);
         $orderResource = OrderResource::collection($orders);
 
-        return response([
+        return [
             'id' => $this->id,
 
-        ],201);
+        ];
     }
 
     public function perUser(Request $request,$userId)
     {
         $pageSize = $request->page_size ?? 50;
         $order = Order::whereIn('user_id',[$userId])->paginate($pageSize);
-        return response([
+        return [
            'orders'=> OrderResource::collection($order),
-        ],201);
+        ];
     }
 
 
@@ -43,9 +43,9 @@ class OrderController extends Controller
     public function show(Request $request,$userId, $id)
     {
         $userItems = Order::whereIn('user_id',[$userId])->whereIn('id',[$id])->get();
-        return response([
+        return [
             'orders' => OrderResource::collection($userItems),
-        ],201);
+        ];
     }
 
     //add new order

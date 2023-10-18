@@ -14,27 +14,27 @@ class OrderItemController extends Controller
         $pageSize = $request->page_size ?? 100;
         $orderItems = OrderItem::query()->paginate($pageSize);
         $itemResource = OrderItemResource::collection($orderItems);
-        return response([
+        return [
             'order_items' => $itemResource,
-        ],201);
+        ];
     }
 
     //display by name
     public function singleItem(Request $request,  $id)
     {
         $orderItemId = OrderItem::fidn($id);
-        return response([
+        return [
             'order_item' => $orderItemId
-        ],201);
+        ];
     }
 
     public function store(Request $request)
     {
         $orderItems = OrderItem::create($request->all());
-        return response ([
+        return [
             'order_deails' => $orderItems,
             'message' => 'order item added to database'
-        ],201);
+        ];
     }
 
     //update
@@ -43,10 +43,10 @@ class OrderItemController extends Controller
         $orderItems = OrderItem::find($id);
         $newOrderItems = $orderItems->update($request->all());
 
-        return response ([
+        return [
             'order_deails' => $$newOrderItems,
             'message' => 'order item updated'
-        ],201);
+        ];
     }
 
     //delete
@@ -56,10 +56,10 @@ class OrderItemController extends Controller
         $orderItems = OrderItem::find($id);
         $newOrderItems = $orderItems->delete();
 
-        return response([
+        return [
             'order_item' =>  $newOrderItems,
             'message' => 'order item removed'
-        ]);
+        ];
     }
 
 }

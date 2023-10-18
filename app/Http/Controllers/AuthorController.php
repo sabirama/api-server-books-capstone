@@ -18,27 +18,26 @@ class AuthorController extends Controller
     public function name(Request $request)
     {
         $pageSize = $request->page_size ?? 200;
-        return response([
-           'authors'=> Author::orderBy('pen_name')->paginate($pageSize),
-        ],201);
+        return Author::orderBy('pen_name')->paginate($pageSize);
+
     }
 
     //individual author
     public function show(Request $request, $id)
     {
-        return response([
-           'author' => Author::find($id)
-        ],201);
+
+        return Author::find($id);
+
     }
 
     //add new author
     public function store(Request $request)
     {
         $author = Author::create($request->all());
-        return response([
+        return [
            'author'=>  $author,
            'message'=> 'author added to database'
-        ],201);
+        ];
     }
 
     //update
@@ -46,10 +45,10 @@ class AuthorController extends Controller
     {
         $author = Author::find($id);
         $newAuthor = $author->update($request->all());
-        return response([
+        return [
                 $newAuthor,
                 'file updated'
-            ]);
+            ];
     }
 
     //delete
@@ -59,10 +58,10 @@ class AuthorController extends Controller
         $author = Author::find($id);
         $author->delete();
 
-        return response([
+        return [
             $author,
             'file removed'
-        ]);
+        ];
 
     }
 }

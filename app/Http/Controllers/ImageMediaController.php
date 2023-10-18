@@ -12,9 +12,9 @@ class ImageMediaController extends Controller
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 100;
         $images = ImageMedia::query()->paginate($pageSize);
-        return response([
+        return [
             'images' => $images,
-        ]);
+        ];
     }
 
     public function byQuery(Request $request) {
@@ -22,9 +22,9 @@ class ImageMediaController extends Controller
         $imageType = $request->image_type;
         $associatedId = $request->associated_id;
         $images = ImageMedia::whereIn('image_type', [$imageType])->whereIn('associated_id', [$associatedId])->paginate($pageSize);
-        return response([
+        return [
             'images' => $images,
-        ]);
+        ];
     }
 
     /**
@@ -33,9 +33,9 @@ class ImageMediaController extends Controller
     public function show($id)
     {
         $image = ImageMedia::find($id);
-        return response([
+        return [
             'image'=>$image,
-        ],200);
+        ];
     }
 
     /**
@@ -60,10 +60,10 @@ class ImageMediaController extends Controller
                 'associated_id' => $request->associated_id
             ]);
 
-        return response([
+        return [
             'image'=>$image,
             'message'=> 'file uploaded'
-        ],200);
+        ];
 
     }
 
@@ -86,12 +86,12 @@ class ImageMediaController extends Controller
         } else {
             return response([
                 'message'=> "File does not exist."
-            ]);
+            ],301);
         }
 
-        return response([
+        return [
             $storedImage,
             'message'=> 'file deleted'
-        ],200);
+        ];
     }
 }

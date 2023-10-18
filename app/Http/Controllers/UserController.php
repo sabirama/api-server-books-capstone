@@ -24,9 +24,9 @@ class UserController extends Controller
     public function allUsers() {
         $users = User::all();
 
-        return response([
+        return [
             'users' => UserResource::collection($user)
-        ]);
+        ];
     }
 
 }

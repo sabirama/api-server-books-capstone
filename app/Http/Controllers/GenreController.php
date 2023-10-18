@@ -9,18 +9,18 @@ class GenreController extends Controller
 {
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 100;
-        return response([
+        return [
           'genres'=> Genre::query()->paginate($pageSize)
-        ],201);
+        ];
     }
 
     //display by name
     public function name(Request $request)
     {
         $pageSize = $request->page_size ?? 100;
-        return response([
+        return [
           'genres'=> Genre::orderBy('name')->paginate($pageSize)
-        ],201);
+        ];
 
     }
 
@@ -28,9 +28,9 @@ class GenreController extends Controller
     public function show(Request $request, $id)
     {
         $genre = Genre::find($id);
-        return response([
+        return [
             'genre' => $genre
-        ],201);
+        ];
 
     }
 
@@ -38,10 +38,10 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         $genre = Genre::create($request->all());
-        return response([
+        return [
             'genre' => $genre,
             'message' => 'genre added to database'
-        ],201);
+        ];
     }
 
     //update
@@ -50,10 +50,10 @@ class GenreController extends Controller
         $genre = Genre::find($id);
         $newGenre = $genre->update($request->all());
 
-         return response([
+         return [
             'genre' => $newGenre,
             'message ' => 'genre updated'
-        ],201);
+        ];
     }
 
     //delete
@@ -63,9 +63,9 @@ class GenreController extends Controller
         $genre = Genre::find($id);
         $genre->delete();
 
-        return response([
+        return [
             'genre' => $genre,
             'nessage' => 'file removed'
-        ]);
+        ];
     }
 }

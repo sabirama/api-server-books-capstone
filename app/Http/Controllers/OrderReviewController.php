@@ -23,9 +23,9 @@ class OrderReviewController extends Controller
         $userId = $request->user_id ?? "";
         $orderReview = OrderReview::whereIn('user_id',[$userId])->paginate($pageSize);
 
-        return response([
+        return [
             'order_review' => $orderReview,
-        ],201);
+        ];
     }
 
     //display latest
@@ -34,27 +34,27 @@ class OrderReviewController extends Controller
 
         $pageSize = $request->page_size ?? 100;
         $orderReview = OrderReview::orderBy('created_at', 'desc')->paginate($pageSize);
-        return response([
+        return [
             'order_review' =>  $orderReview,
-        ],201);
+        ];
     }
 
     //display by name
     public function singleReview($id)
     {
         $orderReview =  OrderReview::find($id);
-        return response([
+        return [
             'order_review' =>  $orderReview,
-        ],201);
+        ];
     }
 
     //individual book
     public function show(Request $request, $userId)
     {
         $orderReview = OrderReview::wherIn('user_id',$userId);
-        return response([
+        return [
             'order_review' =>  $orderReview,
-        ],201);
+        ];
 
     }
 
@@ -62,10 +62,10 @@ class OrderReviewController extends Controller
     public function store(Request $request)
     {   $orderReview = OrderReview::create($request->all());
 
-        return response([
+        return [
             'order_review'=>$orderReview,
             'message'=>'order_review added to database'
-        ]);
+        ];
     }
 
     //update

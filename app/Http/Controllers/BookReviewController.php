@@ -11,9 +11,9 @@ class BookReviewController extends Controller
         $pageSize = $request->page_size ?? 100;
         $bookReviews = BookReview::query()->paginate($pageSize);
 
-        return response([
+        return [
             'books_reviews' =>  $bookReviews,
-        ],201);
+        ];
 
     }
 
@@ -22,9 +22,9 @@ class BookReviewController extends Controller
         $userId = $request->user_id ?? "";
         $bookReviews = BookReview::whereIn('user_id',[$userId])->paginate($pageSize);
 
-        return response([
+        return [
             'book_reviews' => $bookReviews,
-        ],201);
+        ];
     }
 
     //display latest
@@ -33,27 +33,27 @@ class BookReviewController extends Controller
 
         $pageSize = $request->page_size ?? 100;
         $bookReviews = BookReview::orderBy('created_at', 'desc')->paginate($pageSize);
-        return response([
+        return [
             'books_reviews' =>  $bookReviews,
-        ],201);
+        ];
     }
 
     //individual book
     public function singleReview($id)
     {
         $bookReviews =  BookReview::find($id);
-        return response([
+        return [
             'books_reviews' =>  $bookReviews,
-        ],201);
+        ];
     }
 
     //display by user
     public function show(Request $request, $userId)
     {
         $bookReviews = BookReview::wherIn('user_id',$userId);
-        return response([
+        return [
             'books_reviews' =>  $bookReviews,
-        ],201);
+        ];
 
     }
 
@@ -61,10 +61,10 @@ class BookReviewController extends Controller
     public function store(Request $request)
     {   $bookReviews = BookReview::create($request->all());
 
-        return response([
+        return [
             'books_reviews'=>$bookReviews,
             'message'=>'book review added to database'
-        ]);
+        ];
     }
 
     //update
