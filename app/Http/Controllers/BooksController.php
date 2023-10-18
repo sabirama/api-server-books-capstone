@@ -14,12 +14,12 @@ class BooksController extends Controller
 {
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 150;
+        $title= $request->book_title ?? null;
         $books = Book::query()->paginate($pageSize);
 
         return BookResource::collection($books);
 
     }
-
 
 
     //display latest

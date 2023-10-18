@@ -53,6 +53,9 @@
     Route::get - '/images/query'
     Route::get - '/images/{id}',
 
+    //Search
+    Route::get - '/search'
+
 ---
 
 // Protected Resource Routes requires bearer token
@@ -124,3 +127,6 @@ associated id - associated_id
 //image types
 user_image,
 book_image
+
+//search
+search

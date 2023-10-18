@@ -14,6 +14,7 @@ use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ImageMediaController;
+use App\http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,9 @@ Route::group([], function() {
     Route::get('/images',[ImageMediaController::class, 'index']);
     Route::get('/images/query',[ImageMediaController::class, 'byQuery']);
     Route::get('/images/{id}',[ImageMediaController::class, 'show']);
+
+    //Search for Books or Author Route
+    Route::get('/search', [SearchController::class, 'search']);
 
 //Routes to be put to authentication
 
