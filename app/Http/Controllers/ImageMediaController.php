@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ImageMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Public;
+use File;
 
 class ImageMediaController extends Controller
 {
@@ -55,7 +57,8 @@ class ImageMediaController extends Controller
         }
 
         $image = ImageMedia::create([
-                'image_path' =>  '/storage/'.$filename,
+                'image_path' =>  $filepath,
+                'image_name' => $filename,
                 'image_type' => $request->image_type,
                 'associated_id' => $request->associated_id
             ]);
@@ -76,21 +79,24 @@ class ImageMediaController extends Controller
         $associatedId = $request->associated_id;
         $type = $request->type;
         $filepath = $request->image_path;
-        $image = ImageMedia::whereIn('image_type',[$type])->whereIn('associated_id', [$associatedId])->whereIn('image_path',[$filepath]);
+        $image = ImageMedia::whereIn('image_type',[$type])->whereIn('associated_id', [$associatedId])->whereIn('image_path',[$filepath])->first();
         $storedImage = $image->first(); //** get the image */
 
-        //check if file exist
-        if (Storage::exists($filepath)) {
+        // check if file exist
+        if ($image) {
             $storedImage->delete();
-            Storage::delete($filepath);
+            // Storage::delete($filepath);
+            File::delete(public_path("/storage/".$image->image_name));
         } else {
             return response([
+                $image,
                 'message'=> "File does not exist."
             ],301);
         }
 
         return [
-            $storedImage,
+
+            $image,
             'message'=> 'file deleted'
         ];
     }

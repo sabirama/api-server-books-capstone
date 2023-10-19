@@ -18,6 +18,7 @@ class ImageMedia extends Model
 
     protected $fillable = [
         'image_path',
+        'image_name',
         'image_type',
         'associated_id'
     ];
