@@ -55,7 +55,7 @@ class ImageMediaController extends Controller
         }
 
         $image = ImageMedia::create([
-                'image_path' =>  storage_path('app').$filepath,
+                'image_path' =>  '/storage/'.$filename,
                 'image_type' => $request->image_type,
                 'associated_id' => $request->associated_id
             ]);
