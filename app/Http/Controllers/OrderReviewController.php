@@ -11,9 +11,9 @@ class OrderReviewController extends Controller
         $pageSize = $request->page_size ?? 100;
         $orderReview = OrderReview::query()->paginate($pageSize);
 
-        return response([
+        return [
             'order_review' =>  $orderReview,
-        ],201);
+        ];
 
 
     }
