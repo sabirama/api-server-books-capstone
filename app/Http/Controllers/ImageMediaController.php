@@ -53,7 +53,7 @@ class ImageMediaController extends Controller
             $file = $request->file('image');
             $filename = date('D-M-Y').time()."image".".png";
             $file->storeAs('public/',$filename);
-            $filepath = '/public/'.$filename;
+            $filepath = '/storage/'.$filename;
         }
 
         $image = ImageMedia::create([
