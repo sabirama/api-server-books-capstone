@@ -13,7 +13,6 @@ use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\OrderReviewController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\ImageMediaController;
 use App\http\Controllers\SearchController;
 
@@ -104,9 +103,9 @@ Route::group([], function() {
     Route::delete('/books/{id}', [BooksController::class, 'destroy']);
 
     //BooksReview
-    Route::post('/book-reviews', [BooksController::class, 'store']);
-    Route::put('/book-reviews/{id}', [BooksController::class, 'update']);
-    Route::delete('/book-reviews/{id}', [BooksController::class, 'destroy']);
+    Route::post('/book-reviews', [BookReviewController::class, 'store']);
+    Route::put('/book-reviews/{id}', [BookReviewController::class, 'update']);
+    Route::delete('/book-reviews/{id}', [BookBookReviewController::class, 'destroy']);
 
     //Author
     Route::post('/authors', [AuthorController::class, 'store']);
@@ -119,19 +118,19 @@ Route::group([], function() {
     Route::delete('/genres/{id}', [GenreController::class, 'destroy']);
 
     //Order
-    Route::post('/orders', [GenreController::class, 'store']);
-    Route::put('/orders/{id}', [GenreController::class, 'update']);
-    Route::delete('/orders/{id}', [GenreController::class, 'destroy']);
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::put('/orders/{id}', [OrderController::class, 'update']);
+    Route::delete('/orders/{id}', [OrderController::class, 'destroy']);
 
     //OrderReviews
-    Route::post('/order-reviews', [BooksController::class, 'store']);
-    Route::put('/order-reviews/{id}', [BooksController::class, 'update']);
-    Route::delete('/order-reviews/{id}', [BooksController::class, 'destroy']);
+    Route::post('/order-reviews', [OrderReviewController::class, 'store']);
+    Route::put('/order-reviews/{id}', [OrderReviewController::class, 'update']);
+    Route::delete('/order-reviews/{id}', [OrderReviewController::class, 'destroy']);
 
     //Order Items
-    Route::post('/order-items', [GenreController::class, 'store']);
-    Route::put('/order-items/{id}', [GenreController::class, 'update']);
-    Route::delete('/order-items/{id}', [GenreController::class, 'destroy']);
+    Route::post('/order-items', [OrderItemController::class, 'store']);
+    Route::put('/order-items/{id}', [OrderItemController::class, 'update']);
+    Route::delete('/order-items/{id}', [OrderItemController::class, 'destroy']);
 
     //OrderDetails
     Route::post('/order-details', [OrderDetailsController::class, 'store']);
