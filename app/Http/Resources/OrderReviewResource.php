@@ -7,9 +7,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 use App\Models\User;
 use App\Models\Book;
-use App\Models\BookReview;
+use App\Models\OrderReview;
 
-class BookReviewResource extends JsonResource
+class OrderReviewResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,12 +20,12 @@ class BookReviewResource extends JsonResource
     {
         $book = Book::whereIn("id", [$this->book_id])->get(['id','title','price']);
         $user = User::whereIn("id", [$this->user_id])->get(['id', 'first_name','last_name']);
-        $reviews = BookReview::whereIn('book_id',[$this->book_id])->whereIn('user_id',[$this->user_id])->get(['id','body', 'rate', 'created_at', 'updated_at']);
+        $reviews = OrderReview::whereIn('book_id',[$this->book_id])->whereIn('user_id',[$this->user_id])->get(['id','body', 'rate', 'created_at', 'updated_at']);
 
-        return [
+         return [
             'book'=> $book,
             'user'=> $user,
-            'book_reviews' => $reviews
+            'order_reviews' => $reviews
 
         ];
     }
