@@ -9,6 +9,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\OrderReviewController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserController;

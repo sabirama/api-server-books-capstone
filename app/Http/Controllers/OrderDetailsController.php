@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OrderDetails;
-use App\Models\OrderDetailsResource;
+use App\Http\Resources\OrderDetailsResource;
 
 class OrderDetailsController extends Controller
 {
@@ -13,6 +13,7 @@ class OrderDetailsController extends Controller
         $orderDetails = OrderDetails::query()->paginate($pageSize);
         return ['order_details'=>OrderDetailsResource::collection($orderDetails)];
     }
+
 
     //retturn a single item of order details
     public function singleItem(Request $request, $id)
