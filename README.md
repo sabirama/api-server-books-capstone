@@ -16,6 +16,7 @@
      //BookReview Routes
     Route::get - '/book-reviews',
     Route::get - '/book-reviews/user',
+    Route::get - '/book-reviews/book',
     Route::get - '/book-reviews/{id}',
 
 
@@ -38,6 +39,7 @@
     //Order Review Routes
     Route::get - '/order-reviews',
     Route::get -'/order-reviews/user',
+     Route::get -'/order-reviews/order',
     Route::get - '/order-reviews/{id}',
 
     //Order Details Routes

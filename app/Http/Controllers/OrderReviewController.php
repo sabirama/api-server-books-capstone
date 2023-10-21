@@ -28,6 +28,16 @@ class OrderReviewController extends Controller
         ];
     }
 
+        public function perOrder(Request $request) {
+        $pageSize = $request->page_size ?? 100;
+        $orderId = $request->order_id ?? "";
+        $orderReview = OrderReview::whereIn('user_id',[$orderId])->paginate($pageSize);
+
+        return [
+            'order_review' => $orderReview,
+        ];
+    }
+
     //display latest
     public function latest(Request $request)
     {

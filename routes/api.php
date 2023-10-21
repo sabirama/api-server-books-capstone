@@ -41,6 +41,7 @@ Route::group([], function() {
     //BookReview Routes
     Route::get('/book-reviews', [BookReviewController::class, 'index']);
     Route::get('/book-reviews/user', [BookReviewController::class, 'perUser']);
+    Route::get('/book-reviews/book', [BookReviewController::class, 'perBook']);
     Route::get('/book-reviews/{id}', [BookReviewController::class, 'singleReview']);
 
 
@@ -63,6 +64,7 @@ Route::group([], function() {
     //OrderReview Routes
     Route::get('/order-reviews', [OrderReviewController::class, 'index']);
     Route::get('/order-reviews/user', [OrderReviewController::class, 'perUser']);
+    Route::get('/order-reviews/order', [OrderReviewController::class, 'perOrder']);
     Route::get('/order-reviews/{id}', [OrderReviewController::class, 'singleReview']);
 
     //Order Details Routes
