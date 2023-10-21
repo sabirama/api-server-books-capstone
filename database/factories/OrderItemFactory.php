@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\Book;
+use App\Models\OrderDetails;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderItem>
  */
@@ -24,6 +25,7 @@ class OrderItemFactory extends Factory
         $price = $book->price*$quantity;
 
         return [
+            'order_details_id'=> OrderDetails::pluck('id')->random(),
             'book_id' => $book->id,
             'quantity' => $quantity,
             'price_total' => $price,

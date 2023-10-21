@@ -14,7 +14,6 @@ class OrderDetails extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_item_id',
         'payment_options_id',
         'address_id',
     ];

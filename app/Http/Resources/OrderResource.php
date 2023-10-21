@@ -21,10 +21,10 @@ class OrderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $orderDetails = OrderDetails::find($this->order_details_id)->first();
+        $orderDetails = OrderDetails::whereIn('id', [$this->order_details_id])->first();
         $orderReview = OrderReview::whereIn('order_id', [$this->id])->get('id');
         $user = User::whereIn('id',[$this->user_id])->first();
-        
+
         $orderDetailResource = new OrderDetailsResource($orderDetails);
         $userResource = new UserResource($user);
 

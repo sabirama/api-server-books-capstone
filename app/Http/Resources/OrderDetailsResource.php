@@ -20,7 +20,7 @@ class OrderDetailsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $orderItems = OrderItem::whereIn('id',[$this->order_item_id])->get();
+        $orderItems = OrderItem::whereIn('order_details_id',[$this->id])->get();
         $paymentOption = PaymentOptions::whereIn('id',[$this->payment_option_id])->first();
         $address = Address::whereIn('id',[$this->address_id])->first();
 
