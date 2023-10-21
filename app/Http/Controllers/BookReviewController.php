@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BookReview;
+use App\Http\Resources\BookReviewResource;
 
 class BookReviewController extends Controller
 {
@@ -12,7 +13,7 @@ class BookReviewController extends Controller
         $bookReviews = BookReview::query()->paginate($pageSize);
 
         return [
-            'books_reviews' =>  $bookReviews,
+            'books_reviews' => BookReviewResource::collection($bookReviews),
         ];
 
     }
@@ -23,7 +24,7 @@ class BookReviewController extends Controller
         $bookReviews = BookReview::whereIn('user_id',[$userId])->paginate($pageSize);
 
         return [
-            'book_reviews' => $bookReviews,
+            'book_reviews' => BookReviewResource::collection($bookReviews),
         ];
     }
 
@@ -34,16 +35,16 @@ class BookReviewController extends Controller
         $pageSize = $request->page_size ?? 100;
         $bookReviews = BookReview::orderBy('created_at', 'desc')->paginate($pageSize);
         return [
-            'books_reviews' =>  $bookReviews,
+            'books_reviews' => BookReviewResource::collection($bookReviews),
         ];
     }
 
     //individual book
     public function singleReview($id)
     {
-        $bookReviews =  BookReview::find($id);
+        $bookReview =  BookReview::find($id);
         return [
-            'books_reviews' =>  $bookReviews,
+            'books_reviews' =>  new BookReviewResource($bookReview),
         ];
     }
 
