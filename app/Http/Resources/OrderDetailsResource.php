@@ -28,7 +28,7 @@ class OrderDetailsResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'order_item ' => $orderItemResource,
+            'order_item' => $orderItemResource,
             'payment_option' => $paymentOption,
             'address' => $address,
         ];
