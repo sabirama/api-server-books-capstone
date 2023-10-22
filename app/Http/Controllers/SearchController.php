@@ -24,7 +24,6 @@ class SearchController extends Controller
         return ['author' => $authors];
     }
 
-
 }
 
 

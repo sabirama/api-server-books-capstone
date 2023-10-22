@@ -18,6 +18,8 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentOptionsController;
 use App\http\Controllers\SearchController;
 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -93,8 +95,11 @@ Route::group([], function() {
     Route::get('/payment-options/{id}',[PaymentOptionsController::class, 'show']);
 
     //Search for Books or Author Route
-    Route::get('/lookfor-author/{search}', [SearchController::class, 'author']);
-    Route::get('/lookfor-book/{search}', [SearchController::class, 'book']);
+    Route::get('/lookfor-authors/{search}', [SearchController::class, 'author']);
+    Route::get('/lookfor-books/{search}', [SearchController::class, 'book']);
+
+    //test
+    Route::get('/test', [TestController::class, 'index']);
 
 
 //Routes to be put to authentication
