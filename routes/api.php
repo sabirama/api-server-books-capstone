@@ -94,6 +94,7 @@ Route::group([], function() {
 
     //Search for Books or Author Route
     Route::get('/search', [SearchController::class, 'search']);
+    Route::get('/specify-search', [SearchController::class, 'specificSearch']);
 
 //Routes to be put to authentication
 
