@@ -48,10 +48,10 @@ class GenreController extends Controller
     public function update(Request $request, $id)
     {
         $genre = Genre::find($id);
-        $newGenre = $genre->update($request->all());
+        $genre->update($request->all());
 
          return [
-            'genre' => $newGenre,
+            'genre' => $genre,
             'message ' => 'genre updated'
         ];
     }

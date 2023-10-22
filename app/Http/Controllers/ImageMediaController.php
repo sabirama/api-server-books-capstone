@@ -75,6 +75,7 @@ class ImageMediaController extends Controller
      */
     public function destroy(Request $request)
     {
+
         // ** get request parameters*/
         $associatedId = $request->associated_id;
         $type = $request->type;
@@ -85,7 +86,7 @@ class ImageMediaController extends Controller
         // check if file exist
         if ($image) {
             $storedImage->delete();
-            // Storage::delete($filepath);
+            Storage::delete($filepath);
             File::delete(public_path("/storage/".$image->image_name));
         } else {
             return response([

@@ -59,6 +59,8 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->update($request->all());
+
+        return [$order, 'message' => 'order updated'];
     }
 
     //delete

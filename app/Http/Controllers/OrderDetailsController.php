@@ -49,10 +49,10 @@ class OrderDetailsController extends Controller
     public function destroy($id)
     {
         $orderDetails = OrderDetails::find($id);
-        $newOrderDetails = $orderDetails->delete();
+        $orderDetails->delete();
 
         return [
-            'order_details' =>  $newOrderDetails,
+            'order_details' =>  $orderDetails,
             'message' => 'order details removed'
         ];
     }

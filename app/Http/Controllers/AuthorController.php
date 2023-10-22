@@ -9,9 +9,9 @@ class AuthorController extends Controller
 {
     public function index(Request $request) {
         $pageSize = $request->page_size ?? 200;
-        return response([
+        return [
            'authors' => Author::query()->paginate($pageSize)
-        ],201);
+        ];
     }
 
     //display by name
@@ -44,9 +44,9 @@ class AuthorController extends Controller
     public function update(Request $request, $id)
     {
         $author = Author::find($id);
-        $newAuthor = $author->update($request->all());
+        $author->update($request->all());
         return [
-                $newAuthor,
+                $Author,
                 'file updated'
             ];
     }

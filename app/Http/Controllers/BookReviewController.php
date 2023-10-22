@@ -86,6 +86,8 @@ class BookReviewController extends Controller
     {
         $bookReviews = BookReview::find($id);
         $bookReviews->update($request->all());
+
+        return [$bookReviews, "message" => "book reviews updated"];
     }
 
     //delete

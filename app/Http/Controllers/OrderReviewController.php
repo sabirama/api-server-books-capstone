@@ -83,6 +83,8 @@ class OrderReviewController extends Controller
     {
         $orderReview = OrderReview::find($id);
         $orderReview->update($request->all());
+
+        return [$orderReview, 'messsage' => 'order review updated'];
     }
 
     //delete

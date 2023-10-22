@@ -14,6 +14,8 @@ use App\Http\Controllers\OrderReviewController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageMediaController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\PaymentOptionsController;
 use App\http\Controllers\SearchController;
 
 /*
@@ -75,10 +77,20 @@ Route::group([], function() {
     Route::get('/order-items', [OrderItemController::class, 'index']);
     Route::get('/order-items/{userId}/{id}', [OrderItemController::class, 'singleItem']);
 
-    //Image Media
+    //Image Media Routes
     Route::get('/images',[ImageMediaController::class, 'index']);
     Route::get('/images/query',[ImageMediaController::class, 'byQuery']);
     Route::get('/images/{id}',[ImageMediaController::class, 'show']);
+
+     //Address Routes
+    Route::get('/address',[AddressController::class, 'index']);
+    Route::get('/address/city',[AddressController::class, 'city']);
+     Route::get('/address/province',[AddressController::class, 'province']);
+    Route::get('/address/{id}',[AddressController::class, 'show']);
+
+    //Payment Options Routes
+    Route::get('/payment-options',[PaymentOptionsController::class, 'index']);
+    Route::get('/payment-options/{id}',[PaymentOptionsController::class, 'show']);
 
     //Search for Books or Author Route
     Route::get('/search', [SearchController::class, 'search']);
@@ -140,5 +152,15 @@ Route::group([], function() {
     //ImageMedia
     Route::post('/images',[ImageMediaController::class, 'create']);
     Route::delete('/images',[ImageMediaController::class, 'destroy']);
+
+     //Address
+    Route::post('/address',[AddressController::class, 'store']);
+    Route::put('/address/{id}', [AddressController::class, 'update']);
+    Route::delete('/address/{id}',[AddressController::class, 'destroy']);
+
+      //Payment Options
+    Route::post('/payment-options',[PaymentOptionsController::class, 'store']);
+    Route::put('/payment-options/{id}', [PaymentOptionsController::class, 'update']);
+    Route::delete('/payment-options/{id}',[PaymentOptionsController::class, 'destroy']);
 
  });
