@@ -14,6 +14,6 @@ class SearchController extends Controller
         $books = Book::where('title', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
         $authors = Author::where('pen_name', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
 
-        return [$books, $authors];
+        return ['books'=>$books, 'authors'=>$authors];
     }
 }
