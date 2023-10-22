@@ -19,7 +19,7 @@ class OrderReviewResource extends JsonResource
     public function toArray(Request $request): array
     {
         $book = Book::whereIn("id", [$this->book_id])->get(['id','title','price']);
-        $user = User::whereIn("id", [$this->user_id])->get(['id', 'first_name','last_name']);
+        $user = User::whereIn("id", [$this->user_id])->get(['id', 'first_name','last_name', 'username']);
         $reviews = OrderReview::whereIn('book_id',[$this->book_id])->whereIn('user_id',[$this->user_id])->get(['id','body', 'rate', 'created_at', 'updated_at']);
 
          return [
