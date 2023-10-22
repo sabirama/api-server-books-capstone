@@ -93,10 +93,10 @@ Route::group([], function() {
     Route::get('/payment-options/{id}',[PaymentOptionsController::class, 'show']);
 
     //Search for Books or Author Route
-    Route::get('/search', [SearchController::class, 'search']);
-    Route::get('/search/{search}', [SearchController::class, 'searchFor']);
-    Route::get('/search-author/{search}', [SearchController::class, 'searchForAuthor']);
-    Route::get('/search-book/{search}', [SearchController::class, 'searchForBook']);
+    Route::get('/lookfor', [SearchController::class, 'search']);
+    Route::get('/lookfor/{search}', [SearchController::class, 'searchFor']);
+    Route::get('/lookfor-author/{search}', [SearchController::class, 'searchForAuthor']);
+    Route::get('/lookfor-book/{search}', [SearchController::class, 'searchForBook']);
 
 
 //Routes to be put to authentication
