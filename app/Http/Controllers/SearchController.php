@@ -15,7 +15,7 @@ class SearchController extends Controller
         $authors = Author::where('pen_name', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
         $searchValue = ['books' =>$books, 'authors' => $authors ];
 
-        return $searchValue;
+        return response($searchValue);
     }
 
     public function specificSearch(Request $request) {
