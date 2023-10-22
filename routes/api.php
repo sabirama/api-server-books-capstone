@@ -85,7 +85,7 @@ Route::group([], function() {
      //Address Routes
     Route::get('/address',[AddressController::class, 'index']);
     Route::get('/address/city',[AddressController::class, 'city']);
-     Route::get('/address/province',[AddressController::class, 'province']);
+    Route::get('/address/province',[AddressController::class, 'province']);
     Route::get('/address/{id}',[AddressController::class, 'show']);
 
     //Payment Options Routes
