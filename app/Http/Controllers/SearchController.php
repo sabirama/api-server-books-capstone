@@ -10,9 +10,9 @@ use App\Models\Author;
 class SearchController extends Controller
 {
     public function search(Request $request) {
-
-        $books = Book::where('title', 'LIKE','%'.$request->search.'%')->get();
-        $authors = Author::where('pen_name', 'LIKE','%'.$request->search.'%')->get();
+        $pageSize= $request->page_size ?? 100;
+        $books = Book::where('title', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
+        $authors = Author::where('pen_name', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
 
         return [$books, $authors];
     }
