@@ -18,46 +18,32 @@ class SearchController extends Controller
         return response($searchValue);
     }
 
-    public function specificSearch(Request $request) {
+     public function searchFor(Request $request, $search) {
         $pageSize= $request->page_size ?? 50;
-        $books = Book::whereIn('title',[$request->search])->paginate($pageSize);
-        $authors = Author::whereIn('pen_name',[$request->search])->paginate($pageSize);
+        $books = Book::where('title', 'LIKE','%'.$search.'%')->paginate($pageSize);
+        $authors = Author::where('pen_name', 'LIKE','%'.$search.'%')->paginate($pageSize);
         $searchValue = ['books' =>$books, 'authors' => $authors ];
 
-        return $searchValue;
+        return response($searchValue);
     }
 
-    public function searchBook(Request $request) {
+    public function searchForBook(Request $request, $search) {
         $pageSize= $request->page_size ?? 50;
-       $books = Book::where('title', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
-        $searchValue = ['books' =>$books,];
+        $books = Book::whereIn('title', [$search])->paginate($pageSize);
+        $searchValue = ['books' =>$books, ];
 
-        return $searchValue;
+        return response($searchValue);
     }
 
-    public function searchAuthor(Request $request) {
+    public function searchForAuthor(Request $request, $search) {
         $pageSize= $request->page_size ?? 50;
-        $authors = Author::where('pen_name', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
-        $searchValue = ['author' =>$authors,];
+        $authors = Author::whereIn('pen_name',[ $search])->paginate($pageSize);
+        $searchValue = [ 'authors' => $authors ];
 
-        return $searchValue;
+        return response($searchValue);
     }
 
-    public function searchBookSpecific(Request $request) {
-        $pageSize= $request->page_size ?? 50;
-       $books = Book::whereIn('title', [$request->search])->paginate($pageSize);
-        $searchValue = ['books' =>$books,];
 
-        return $searchValue;
-    }
-
-    public function searchAuthorSpecific(Request $request) {
-        $pageSize= $request->page_size ?? 50;
-        $authors = Author::whereIn('pen_name', [$request->search])->paginate($pageSize);
-        $searchValue = ['author' =>$authors,];
-
-        return $searchValue;
-    }
 }
 
 
