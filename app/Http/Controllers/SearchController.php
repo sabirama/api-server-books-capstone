@@ -45,7 +45,7 @@ class SearchController extends Controller
 
     public function searchBookSpecific(Request $request) {
         $pageSize= $request->page_size ?? 50;
-       $books = Book::whereIn('title', $request->search)->paginate($pageSize);
+       $books = Book::whereIn('title', [$request->search])->paginate($pageSize);
         $searchValue = ['books' =>$books,];
 
         return $searchValue;
@@ -53,7 +53,7 @@ class SearchController extends Controller
 
     public function searchAuthorSpecific(Request $request) {
         $pageSize= $request->page_size ?? 50;
-        $authors = Author::whereIn('pen_name', $request->search)->paginate($pageSize);
+        $authors = Author::whereIn('pen_name', [$request->search])->paginate($pageSize);
         $searchValue = ['author' =>$authors,];
 
         return $searchValue;
