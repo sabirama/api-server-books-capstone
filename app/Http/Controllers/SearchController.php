@@ -18,7 +18,7 @@ class SearchController extends Controller
         return $searchValue;
     }
 
-        public function specificSearch(Request $request) {
+    public function specificSearch(Request $request) {
         $pageSize= $request->page_size ?? 50;
         $books = Book::whereIn('title',[$request->search])->paginate($pageSize);
         $authors = Author::whereIn('pen_name',[$request->search])->paginate($pageSize);
@@ -26,4 +26,22 @@ class SearchController extends Controller
 
         return $searchValue;
     }
+
+    public function searchBook(Request $request) {
+        $pageSize= $request->page_size ?? 50;
+       $books = Book::where('title', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
+        $searchValue = ['books' =>$books,];
+
+        return $searchValue;
+    }
+
+    public function searchAuthor(Request $request) {
+        $pageSize= $request->page_size ?? 50;
+        $authors = Author::where('pen_name', 'LIKE','%'.$request->search.'%')->paginate($pageSize);
+        $searchValue = ['author' =>$authors,];
+
+        return $searchValue;
+    }
 }
+
+
