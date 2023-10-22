@@ -10,20 +10,18 @@ use App\Models\Author;
 class SearchController extends Controller
 {
 
-    public function searchForBook(Request $request, $search) {
+    public function book(Request $request, $search) {
         $pageSize= $request->page_size ?? 50;
         $books = Book::whereIn('title', [$search])->paginate($pageSize);
-        $searchValue = ['books' =>$books, ];
 
-        return response($searchValue);
+        return ['books'=>$books];
     }
 
-    public function searchForAuthor(Request $request, $search) {
+    public function author(Request $request, $search) {
         $pageSize= $request->page_size ?? 50;
-        $authors = Author::whereIn('pen_name',[ $search])->paginate($pageSize);
-        $searchValue = [ 'authors' => $authors ];
+        $authors = Author::whereIn('pen_name',[$search])->paginate($pageSize);
 
-        return response($searchValue);
+        return ['author' => $authors];
     }
 
 
