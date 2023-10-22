@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageMediaController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentOptionsController;
+use App\Http\Controllers\CartController;
 use App\http\Controllers\SearchController;
 
 use App\Http\Controllers\TestController;
@@ -94,9 +95,11 @@ Route::group([], function() {
     Route::get('/payment-options',[PaymentOptionsController::class, 'index']);
     Route::get('/payment-options/{id}',[PaymentOptionsController::class, 'show']);
 
-    //Search for Books or Author Route
-    Route::get('/lookfor-authors/{search}', [SearchController::class, 'author']);
-    Route::get('/lookfor-books/{search}', [SearchController::class, 'book']);
+    //Cart Routes
+    Route::get('/cart',[CartController::class, 'index']);
+    Route::get('/cart/{id}',[CartController::class, 'show']);
+    Route::get('/cart-user/{id}',[CartController::class, 'showUser']);
+
 
     //test
     Route::get('/search', [TestController::class, 'index']);
@@ -171,5 +174,8 @@ Route::group([], function() {
     Route::post('/payment-options',[PaymentOptionsController::class, 'store']);
     Route::put('/payment-options/{id}', [PaymentOptionsController::class, 'update']);
     Route::delete('/payment-options/{id}',[PaymentOptionsController::class, 'destroy']);
+
+    Route::post('/cart',[CartController::class, 'store']);
+    Route::delete('/cart/{id}',[CartController::class, 'destroy']);
 
  });

@@ -26,6 +26,7 @@ class OrderItemFactory extends Factory
 
         return [
             'order_details_id'=> OrderDetails::pluck('id')->random(),
+            'cart_id'=>fake()->numberBetween(1,100),
             'book_id' => $book->id,
             'quantity' => $quantity,
             'price_total' => $price,

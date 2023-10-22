@@ -31,7 +31,7 @@ class PaymentOptionsController extends Controller
     //add new address
     public function store(Request $request)
     {
-        $address = PaymentOptions::create($request->all());
+        $paymentOption = PaymentOptions::create($request->all());
         return [
            'payment_option'=>  $paymentOption,
            'message'=> 'payment option added to database'
@@ -57,7 +57,7 @@ class PaymentOptionsController extends Controller
         $paymentOption->delete();
 
         return [
-            $address,
+            $paymnetOption,
             'file removed'
         ];
 
