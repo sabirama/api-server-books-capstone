@@ -17,7 +17,7 @@ class CartResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $user = User::whereIn('id', [$this->user_id])->first();
+        $user = User::whereIn('id', [$this->user_id])->first([ "first_name","last_name","username"]);
         $orderItems = OrderItem::whereIn('cart_id', [$this->id])->get();
         $orderItemResource =  OrderItemResource::collection($orderItems);
         return [

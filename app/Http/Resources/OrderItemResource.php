@@ -16,7 +16,7 @@ class OrderItemResource extends JsonResource
 
     public function toArray(Request $request): array
     {
-        $book = Book::whereIn('id',[$this->book_id])->get();
+        $book = Book::whereIn('id',[$this->book_id])->get(["id","title","price"]);
 
         return [
             'id' => $this->id,
