@@ -19,6 +19,16 @@ class OrderItemController extends Controller
         ];
     }
 
+        //display by name
+    public function perUSer(Request $request,  $cartId)
+    {
+        $orderItems = OrderItem::whereIn('cart_id', [$cartId])->get();
+         $itemResource = OrderItemResource::collection($orderItems);
+        return [
+            'order_items' => $itemResource
+        ];
+    }
+
     //display by name
     public function singleItem(Request $request,  $id)
     {

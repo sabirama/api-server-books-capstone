@@ -78,7 +78,8 @@ Route::group([], function() {
 
     //Order Items Routes
     Route::get('/order-items', [OrderItemController::class, 'index']);
-    Route::get('/order-items/{userId}/{id}', [OrderItemController::class, 'singleItem']);
+    Route::get('/order-items/{id}', [OrderItemController::class, 'singleItem']);
+     Route::get('/order-items:user/{cartId}', [OrderItemController::class, 'perUser']);
 
     //Image Media Routes
     Route::get('/images',[ImageMediaController::class, 'index']);
