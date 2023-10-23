@@ -103,8 +103,8 @@ Route::group([], function() {
 
     //test
     Route::get('/search', [TestController::class, 'index']);
-    Route::get('/test-book/{val}', [TestController::class, 'book']);
-    Route::get('/test-author/{val}', [TestController::class, 'author']);
+    Route::get('/search-book/{val}', [TestController::class, 'book']);
+    Route::get('/search-author/{val}', [TestController::class, 'author']);
 
 
 //Routes to be put to authentication

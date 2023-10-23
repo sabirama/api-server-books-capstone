@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Book;
 use App\Models\Author;
+use App\Http\Resources\BookResource;
 
 class TestController extends Controller
 {
@@ -16,7 +17,7 @@ class TestController extends Controller
         $authors = Author::where('pen_name','LIKE','%'.$val.'%')->paginate($pageSize);
         $books = Book::where('title','LIKE','%'.$val.'%')->paginate($pageSize);
 
-        return ['author' => $authors, 'books'=> $books];
+        return ['author' => $authors, 'books'=> BookResource::collection($books)];
     }
 
 
@@ -24,7 +25,7 @@ class TestController extends Controller
         $pageSize= $request->page_size ?? 50;
         $books = Book::whereIn('title', [$val])->paginate($pageSize);
 
-        return ['books'=>$books];
+        return ['books'=>BookResource::collection($books)];
     }
 
     public function author(Request $request, $val) {
