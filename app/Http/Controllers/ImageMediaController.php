@@ -77,28 +77,23 @@ class ImageMediaController extends Controller
     {
 
         // ** get request parameters*/
-        $associatedId = $request->associated_id;
-        $type = $request->type;
+        $id=$request->image_id;
         $filepath = $request->image_path;
-        $image = ImageMedia::whereIn('image_type',[$type])->whereIn('associated_id', [$associatedId])->whereIn('image_path',[$filepath])->first();
-        $storedImage = $image->first(); //** get the image */
+        $image = ImageMedia::find($id); //** get the image */
+
 
         // check if file exist
         if ($image) {
-            $storedImage->delete();
+            $image->delete();
             Storage::delete($filepath);
             File::delete(public_path("/storage/".$image->image_name));
+
+             return [ $image, 'message'=> 'file deleted'];
         } else {
             return response([
                 $image,
                 'message'=> "File does not exist."
             ],301);
         }
-
-        return [
-
-            $image,
-            'message'=> 'file deleted'
-        ];
     }
 }
