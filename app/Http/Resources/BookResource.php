@@ -21,7 +21,7 @@ class BookResource extends JsonResource
     public function toArray(Request $request): array
     {
         $bookDetails = BookDetails::whereIn('book_id',[$this->id])->first();
-        $image = ImageMedia::whereIn('image_type',['book_image'])->whereIn('associated_id', [$this->id])->get() ?? null;
+        $image = ImageMedia::whereIn('image_type',['book_image'])->whereIn('associated_id', [$this->id])->get();
         $bookDetailsResource = new BookDetailsResource($bookDetails);
         return [
             'id'=> $this->id,
