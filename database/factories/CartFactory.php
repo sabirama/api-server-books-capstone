@@ -18,7 +18,7 @@ class CartFactory extends Factory
     {
 
         return [
-            'user_id'=>fake()->unique()->numberBetween(1, 20),
+            'user_id'=>fake()->unique(20)->numberBetween(1, 20),
         ];
     }
 }

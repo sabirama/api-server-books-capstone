@@ -33,7 +33,7 @@ class BookReviewController extends Controller
 
     public function perBook(Request $request) {
         $pageSize = $request->page_size ?? 100;
-        $bookId = $request->book_id ?? "";
+        $bookId = $request->book_id;
         $bookReviews = BookReview::whereIn('book_id',[$bookId])->paginate($pageSize);
 
         return [
